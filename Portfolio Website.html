@@ -1,0 +1,2682 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="color-scheme" content="light dark" />
+    <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#0a0d09" />
+    <meta name="theme-color" media="(prefers-color-scheme: light)" content="#f4f5f1" />
+    <meta name="description" content="Muhammad Umar — Full-Stack Software Engineer. Modern frontends with Next.js and React, high-performance Python backends with FastAPI and Flask." />
+    <title>Muhammad Umar — Full-Stack Software Engineer</title>
+    <!-- if you're reading this in devtools, you're my kind of person. -->
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%230a0d09'/%3E%3Ctext x='32' y='43' font-family='monospace' font-size='28' font-weight='bold' fill='%23c6ff4a' text-anchor='middle'%3E%5C_%3C/text%3E%3C/svg%3E" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Sora:wght@400;500;600;700&family=JetBrains+Mono:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet" />
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Muhammad Umar",
+      "jobTitle": "Full-Stack Software Engineer",
+      "knowsAbout": ["Next.js", "React", "JavaScript", "Tailwind CSS", "Python", "FastAPI", "Flask", "REST APIs", "Pydantic", "Git", "Vercel"]
+    }
+    </script>
+    <style>
+      :root {
+        color-scheme: light dark;
+        /* --- dark palette (default) --- */
+        --bg: #0a0d09;
+        --bg-2: #0d110c;
+        --surface: #121612;
+        --panel: #161b15;
+        --line: #262c24;
+        --line-soft: #1c211b;
+        --ink: #f0f4e9;
+        --muted: #a7b09e;
+        --faint: #6f7867;
+        --acid: #c6ff4a;
+        --acid-soft: rgba(198, 255, 74, 0.09);
+        --acid-text: #c6ff4a;
+        --acid-ink: #0d120a;
+        --peach: #ffb26b;
+        --stripe-ink: #0a0d09;
+        --grid-line: rgba(240, 244, 233, 0.035);
+        --glow: rgba(198, 255, 74, 0.07);
+        --shadow: 0 24px 60px -24px rgba(0, 0, 0, 0.65);
+        --nav-bg: rgba(10, 13, 9, 0.82);
+        --chip-bg: #1a2019;
+        --term-bg: #0c100b;
+        --term-head: #131813;
+      }
+      @media (prefers-color-scheme: light) {
+        :root {
+          --bg: #f4f5f1;
+          --bg-2: #eceee6;
+          --surface: #ffffff;
+          --panel: #fafbf7;
+          --line: #d8dcd0;
+          --line-soft: #e6e9de;
+          --ink: #13180f;
+          --muted: #59614f;
+          --faint: #8b9381;
+          --acid: #c6ff4a;
+          --acid-soft: rgba(74, 120, 0, 0.08);
+          --acid-text: #477400;
+          --acid-ink: #0d120a;
+          --peach: #c26a1f;
+          --stripe-ink: #0a0d09;
+          --grid-line: rgba(19, 24, 15, 0.05);
+          --glow: rgba(74, 120, 0, 0.06);
+          --shadow: 0 24px 60px -28px rgba(19, 24, 15, 0.28);
+          --nav-bg: rgba(244, 245, 241, 0.85);
+          --chip-bg: #eef1e7;
+          --term-bg: #0c100b;
+          --term-head: #131813;
+        }
+      }
+
+      * { box-sizing: border-box; }
+      html { scroll-behavior: smooth; }
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--ink);
+        font-family: "Sora", system-ui, -apple-system, "Segoe UI", sans-serif;
+        font-size: 1rem;
+        line-height: 1.7;
+        -webkit-font-smoothing: antialiased;
+        overflow-x: hidden;
+      }
+      ::selection { background: var(--acid); color: #0a0d09; }
+      :focus-visible { outline: 2px solid var(--acid-text); outline-offset: 3px; border-radius: 4px; }
+
+      .skip {
+        position: absolute;
+        width: 1px; height: 1px;
+        padding: 0;
+        overflow: hidden;
+        clip: rect(0 0 0 0);
+        clip-path: inset(50%);
+        white-space: nowrap;
+        border: 0;
+        z-index: 100;
+        background: var(--acid); color: #0a0d09;
+        font-weight: 700; text-decoration: none;
+      }
+      .skip:focus {
+        width: auto; height: auto;
+        padding: 0.6rem 1rem;
+        clip: auto; clip-path: none;
+        overflow: visible;
+        border-radius: 8px;
+      }
+
+      .wrap { width: min(1120px, 100% - 2.5rem); margin-inline: auto; }
+      .mono { font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
+      .sr-only {
+        position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+        overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0;
+      }
+
+      /* ---------- scroll progress ---------- */
+      .progress {
+        position: fixed; top: 0; left: 0; height: 3px; width: 0%;
+        background: var(--acid); z-index: 90;
+      }
+
+      /* ---------- nav ---------- */
+      .nav {
+        position: fixed; inset: 0 0 auto 0; z-index: 80;
+        background: var(--nav-bg);
+        backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+        border-bottom: 1px solid var(--line-soft);
+      }
+      .nav-inner {
+        width: min(1120px, 100% - 2.5rem); margin-inline: auto;
+        display: flex; align-items: center; gap: 1.5rem;
+        padding: 0.8rem 0;
+      }
+      .brand {
+        font-family: "JetBrains Mono", monospace; font-weight: 700; font-size: 1.05rem;
+        color: var(--ink); text-decoration: none; letter-spacing: -0.02em;
+        display: flex; align-items: center; gap: 0.45rem;
+        margin-right: auto;
+      }
+      .brand .cursor { color: var(--acid-text); animation: blink 1.1s steps(2) infinite; }
+      @keyframes blink { 50% { opacity: 0; } }
+      .nav-links { display: flex; gap: 0.25rem; list-style: none; margin: 0; padding: 0; }
+      .nav-links a {
+        font-family: "JetBrains Mono", monospace; font-size: 0.82rem;
+        color: var(--muted); text-decoration: none; padding: 0.45rem 0.7rem; border-radius: 8px;
+        transition: color 0.2s, background 0.2s;
+      }
+      .nav-links a:hover { color: var(--ink); background: var(--acid-soft); }
+      .nav-links a.active { color: var(--acid-text); }
+      .status-pill {
+        display: inline-flex; align-items: center; gap: 0.5rem;
+        font-family: "JetBrains Mono", monospace; font-size: 0.75rem; font-weight: 500;
+        color: var(--acid-text);
+        border: 1px solid var(--line); border-radius: 999px;
+        padding: 0.35rem 0.8rem 0.35rem 0.65rem;
+        background: var(--acid-soft);
+        white-space: nowrap;
+        appearance: none; -webkit-appearance: none;
+        cursor: pointer;
+        transition: border-color 0.2s;
+      }
+      .status-pill:hover { border-color: var(--acid-text); }
+      .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--acid-text); position: relative; }
+      .dot::after {
+        content: ""; position: absolute; inset: -4px; border-radius: 50%;
+        border: 1px solid var(--acid-text); opacity: 0.6;
+        animation: ping 1.8s ease-out infinite;
+      }
+      @keyframes ping { 0% { transform: scale(0.5); opacity: 0.8; } 100% { transform: scale(1.4); opacity: 0; } }
+
+      /* ---------- hero ---------- */
+      .hero {
+        position: relative;
+        padding: 8.5rem 0 4.5rem;
+        background-image:
+          linear-gradient(var(--grid-line) 1px, transparent 1px),
+          linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+        background-size: 56px 56px;
+        overflow: clip;
+      }
+      .hero::after {
+        content: ""; position: absolute; inset: 0; pointer-events: none;
+        background: radial-gradient(52rem 30rem at 78% 8%, var(--glow), transparent 60%);
+      }
+      .hero-grid {
+        position: relative; z-index: 1;
+        display: grid; grid-template-columns: 1.15fr 0.95fr; gap: 3.5rem; align-items: center;
+      }
+      .hero-badge {
+        display: inline-flex; align-items: center; gap: 0.55rem;
+        font-family: "JetBrains Mono", monospace; font-size: 0.8rem;
+        color: var(--muted);
+        border: 1px solid var(--line); border-radius: 999px;
+        padding: 0.4rem 0.95rem; margin-bottom: 1.6rem;
+        background: var(--surface);
+      }
+      .hero-badge b { color: var(--acid-text); font-weight: 700; }
+      h1.name {
+        font-family: "Bricolage Grotesque", system-ui, sans-serif;
+        font-weight: 800; letter-spacing: -0.045em; line-height: 0.94;
+        font-size: clamp(3.4rem, 9.5vw, 6.4rem);
+        margin: 0 0 1.1rem;
+      }
+      h1.name .period { color: var(--acid-text); }
+      .role {
+        font-family: "JetBrains Mono", monospace;
+        font-size: clamp(1rem, 2.2vw, 1.25rem); font-weight: 500;
+        color: var(--ink); margin: 0 0 1.25rem;
+      }
+      .role .prompt { color: var(--acid-text); }
+      .bio {
+        color: var(--muted); font-size: 1.05rem; max-width: 34rem; margin: 0 0 1.8rem;
+      }
+      .bio strong { color: var(--ink); font-weight: 600; }
+      .hero-meta { list-style: none; margin: 0 0 2.2rem; padding: 0; display: grid; gap: 0.55rem; }
+      .hero-meta li {
+        font-family: "JetBrains Mono", monospace; font-size: 0.85rem; color: var(--muted);
+        display: flex; gap: 0.7rem; align-items: baseline;
+      }
+      .hero-meta .tag { color: var(--acid-text); white-space: nowrap; }
+      .scroll-cue {
+        display: inline-flex; align-items: center; gap: 0.8rem;
+        font-family: "JetBrains Mono", monospace; font-size: 0.78rem;
+        color: var(--faint); text-decoration: none;
+      }
+      .scroll-cue .line {
+        width: 44px; height: 1px; background: var(--line); position: relative; overflow: hidden;
+      }
+      .scroll-cue .line::after {
+        content: ""; position: absolute; inset: 0; background: var(--acid-text);
+        animation: cue 1.8s ease-in-out infinite; transform-origin: left;
+      }
+      @keyframes cue { 0% { transform: scaleX(0); } 55% { transform: scaleX(1); transform-origin: left; } 56% { transform-origin: right; } 100% { transform: scaleX(0); transform-origin: right; } }
+
+      /* ---------- terminal ---------- */
+      .terminal {
+        background: var(--term-bg);
+        border: 1px solid var(--line);
+        border-radius: 14px; overflow: hidden;
+        box-shadow: var(--shadow);
+      }
+      .term-head {
+        display: flex; align-items: center; gap: 0.55rem;
+        background: var(--term-head);
+        border-bottom: 1px solid rgba(198, 255, 74, 0.08);
+        padding: 0.7rem 1rem;
+      }
+      .term-dots { display: flex; gap: 0.45rem; }
+      .term-dots i { width: 11px; height: 11px; border-radius: 50%; display: block; }
+      .term-dots i:nth-child(1) { background: #ff5f57; }
+      .term-dots i:nth-child(2) { background: #febc2e; }
+      .term-dots i:nth-child(3) { background: #28c840; }
+      .term-title {
+        font-family: "JetBrains Mono", monospace; font-size: 0.75rem; color: #8b9381;
+        margin-inline: auto; padding-right: 3rem;
+      }
+      .term-body {
+        font-family: "JetBrains Mono", monospace; font-size: 0.88rem; line-height: 1.75;
+        padding: 1.25rem 1.4rem 1.5rem; min-height: 15.5rem;
+        color: #d5dccf;
+      }
+      .term-body .tline { min-height: 1.6em; word-break: break-word; }
+      .term-body .tp { color: var(--acid); }
+      .term-body .tc { color: #f0f4e9; }
+      .term-body .to { color: #8f978b; }
+      .term-body .to.hl { color: var(--acid); }
+      .caret::after {
+        content: "▋"; color: var(--acid); margin-left: 2px;
+        animation: blink 0.9s steps(2) infinite;
+      }
+
+      /* ---------- ticker ---------- */
+      .ticker {
+        background: var(--acid); color: var(--stripe-ink);
+        border-block: 1px solid var(--stripe-ink);
+        overflow: hidden; white-space: nowrap;
+        transform: rotate(-0.6deg) scale(1.01);
+      }
+      .ticker-track {
+        display: inline-flex; gap: 0; padding: 0.7rem 0;
+        animation: tick 28s linear infinite;
+      }
+      .ticker-track span {
+        font-family: "JetBrains Mono", monospace; font-weight: 700; font-size: 0.95rem;
+        letter-spacing: 0.06em; padding: 0 1.4rem; position: relative;
+      }
+      .ticker-track span::after {
+        content: "//"; position: absolute; right: -0.6em; opacity: 0.45; font-weight: 400;
+      }
+      @keyframes tick { to { transform: translateX(-50%); } }
+
+      /* ---------- sections ---------- */
+      section.block { padding: 6rem 0 2rem; position: relative; scroll-margin-top: 4.5rem; }
+      .section-label {
+        font-family: "JetBrains Mono", monospace; font-size: 0.82rem;
+        color: var(--acid-text); margin: 0 0 0.8rem;
+        display: flex; align-items: center; gap: 0.9rem;
+      }
+      .section-label::after { content: ""; height: 1px; width: 72px; background: var(--line); }
+      .section-title {
+        font-family: "Bricolage Grotesque", system-ui, sans-serif;
+        font-weight: 700; letter-spacing: -0.035em; line-height: 1.02;
+        font-size: clamp(2.3rem, 5.5vw, 3.6rem);
+        margin: 0 0 1rem;
+      }
+      .section-sub { color: var(--muted); max-width: 38rem; margin: 0 0 2.8rem; }
+
+      /* ---------- tabs / stack ---------- */
+      .tablist {
+        display: flex; gap: 0.6rem; margin-bottom: 2rem; flex-wrap: wrap;
+      }
+      .tab {
+        font-family: "JetBrains Mono", monospace; font-size: 0.85rem; font-weight: 500;
+        background: var(--surface); color: var(--muted);
+        border: 1px solid var(--line); border-radius: 10px;
+        padding: 0.65rem 1.15rem; cursor: pointer;
+        transition: color 0.2s, border-color 0.2s, background 0.2s, transform 0.15s;
+      }
+      .tab:hover { color: var(--ink); border-color: var(--acid-text); }
+      .tab[aria-selected="true"] {
+        background: var(--acid); border-color: var(--acid); color: var(--acid-ink);
+        font-weight: 700;
+      }
+      .tabpanel {
+        background: var(--surface); border: 1px solid var(--line);
+        border-radius: 16px; padding: clamp(1.6rem, 4vw, 2.6rem);
+      }
+      .panel-head { display: flex; flex-wrap: wrap; align-items: baseline; gap: 1rem 2rem; margin-bottom: 1.4rem; }
+      .panel-cat {
+        font-family: "Bricolage Grotesque", system-ui, sans-serif;
+        font-size: clamp(1.4rem, 3.4vw, 2rem); font-weight: 700; letter-spacing: -0.02em;
+        margin: 0;
+      }
+      .panel-level { margin-left: auto; text-align: right; }
+      .panel-level .lvl-label {
+        font-family: "JetBrains Mono", monospace; font-size: 0.78rem; color: var(--muted);
+        display: block; margin-bottom: 0.45rem;
+      }
+      .meter { width: 180px; max-width: 38vw; height: 8px; background: var(--line-soft); border-radius: 99px; overflow: hidden; }
+      .meter span { display: block; height: 100%; background: var(--acid-text); border-radius: 99px; }
+      .panel-note { color: var(--muted); margin: 0 0 1.6rem; max-width: 40rem; }
+      .chips { display: flex; flex-wrap: wrap; gap: 0.6rem; list-style: none; margin: 0; padding: 0; }
+      .chips li {
+        font-family: "JetBrains Mono", monospace; font-size: 0.82rem;
+        background: var(--chip-bg); color: var(--ink);
+        border: 1px solid var(--line); border-radius: 8px;
+        padding: 0.45rem 0.85rem;
+        display: inline-flex; align-items: center; gap: 0.5rem;
+        transition: border-color 0.2s, transform 0.15s;
+      }
+      .chips li::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: var(--acid-text); flex: none; }
+      .chips li:hover { border-color: var(--acid-text); transform: translateY(-2px); }
+      .callouts { display: grid; gap: 1rem; margin-top: 1.8rem; }
+      .callout {
+        background: var(--acid-soft); border: 1px solid var(--line);
+        border-radius: 12px; padding: 1.1rem 1.3rem;
+        display: grid; grid-template-columns: auto 1fr; gap: 0.9rem; align-items: start;
+      }
+      .callout .k {
+        font-family: "JetBrains Mono", monospace; font-size: 0.72rem; font-weight: 700;
+        color: var(--acid-ink); background: var(--acid-text);
+        padding: 0.25rem 0.6rem; border-radius: 6px; white-space: nowrap; margin-top: 0.15rem;
+      }
+      .callout p { margin: 0; color: var(--muted); font-size: 0.95rem; }
+      .callout p strong { color: var(--ink); }
+
+      /* ---------- ship rows ---------- */
+      .rows { display: grid; gap: 0.9rem; }
+      .row {
+        display: grid; grid-template-columns: auto 1fr auto; gap: 1.4rem; align-items: center;
+        background: var(--surface); border: 1px solid var(--line);
+        border-radius: 14px; padding: 1.5rem 1.7rem;
+        transition: border-color 0.25s, background 0.25s, transform 0.2s;
+        position: relative; overflow: hidden;
+      }
+      .row:hover { border-color: var(--acid-text); transform: translateX(6px); }
+      .row .num {
+        font-family: "JetBrains Mono", monospace; font-size: 0.85rem; font-weight: 700;
+        color: var(--acid-text);
+        border: 1px solid var(--line); border-radius: 8px;
+        padding: 0.35rem 0.6rem; background: var(--acid-soft);
+      }
+      .row h3 {
+        font-family: "Bricolage Grotesque", system-ui, sans-serif;
+        font-size: 1.35rem; font-weight: 700; letter-spacing: -0.02em; margin: 0 0 0.3rem;
+      }
+      .row p { margin: 0; color: var(--muted); font-size: 0.95rem; max-width: 44rem; }
+      .row .tags {
+        display: flex; flex-direction: column; align-items: flex-end; gap: 0.45rem;
+        font-family: "JetBrains Mono", monospace; font-size: 0.74rem; color: var(--faint);
+        white-space: nowrap;
+      }
+      .row .arrow { font-size: 1.3rem; color: var(--acid-text); opacity: 0; transform: translateX(-8px); transition: opacity 0.25s, transform 0.25s; }
+      .row:hover .arrow { opacity: 1; transform: translateX(0); }
+
+      /* ---------- projects ---------- */
+      .row.project { grid-template-columns: auto 1fr; }
+      .project .p-domain {
+        font-family: "JetBrains Mono", monospace; font-size: 0.78rem;
+        color: var(--acid-text); margin: 0 0 0.55rem;
+      }
+      .stack-chips {
+        display: flex; flex-wrap: wrap; gap: 0.45rem;
+        list-style: none; margin: 1rem 0 0; padding: 0;
+      }
+      .stack-chips li {
+        font-family: "JetBrains Mono", monospace; font-size: 0.72rem;
+        color: var(--muted); background: var(--chip-bg);
+        border: 1px solid var(--line); border-radius: 6px;
+        padding: 0.25rem 0.6rem;
+      }
+
+      /* ---------- code section ---------- */
+      .code-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; }
+      .codecard {
+        background: var(--term-bg); border: 1px solid var(--line);
+        border-radius: 14px; overflow: hidden; box-shadow: var(--shadow);
+        display: flex; flex-direction: column; min-width: 0;
+      }
+      .code-head {
+        display: flex; align-items: center; gap: 0.6rem;
+        padding: 0.7rem 1rem; background: var(--term-head);
+        border-bottom: 1px solid rgba(198, 255, 74, 0.08);
+      }
+      .code-head .fname {
+        font-family: "JetBrains Mono", monospace; font-size: 0.78rem; color: #a7b09e;
+        display: flex; align-items: center; gap: 0.5rem;
+      }
+      .code-head .fname::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--acid); }
+      .copy-btn {
+        margin-left: auto;
+        font-family: "JetBrains Mono", monospace; font-size: 0.72rem; font-weight: 500;
+        background: transparent; color: #8b9381;
+        border: 1px solid var(--line); border-radius: 7px;
+        padding: 0.3rem 0.7rem; cursor: pointer;
+        transition: color 0.2s, border-color 0.2s, background 0.2s;
+      }
+      .copy-btn:hover { color: var(--acid); border-color: var(--acid); }
+      .copy-btn.done { color: var(--acid-ink); background: var(--acid); border-color: var(--acid); font-weight: 700; }
+      .codecard pre {
+        margin: 0; padding: 1.3rem 1.35rem 1.5rem;
+        font-family: "JetBrains Mono", monospace; font-size: 0.83rem; line-height: 1.72;
+        color: #d5dccf; overflow-x: auto; flex: 1;
+      }
+      .tok-k { color: var(--acid); }            /* keyword */
+      .tok-s { color: #ffd479; }                /* string */
+      .tok-f { color: #ffb26b; }                /* function */
+      .tok-c { color: #6f7867; font-style: italic; } /* comment */
+      .tok-d { color: #82cfff; }                /* decorator / import name */
+      .code-note {
+        margin-top: 1.4rem;
+        font-family: "JetBrains Mono", monospace; font-size: 0.8rem; color: var(--faint);
+        display: flex; gap: 0.6rem; align-items: baseline;
+      }
+      .code-note .prompt { color: var(--acid-text); }
+
+      /* ---------- stats band ---------- */
+      .stats-band {
+        display: grid; grid-template-columns: repeat(4, 1fr);
+        border: 1px solid var(--line); border-radius: 14px;
+        background: var(--surface);
+        margin: 0 0 2.6rem; overflow: hidden;
+      }
+      .stat { padding: 1.3rem 1rem 1.15rem; text-align: center; }
+      .stat + .stat { border-left: 1px solid var(--line-soft); }
+      .stat .n {
+        font-family: "Bricolage Grotesque", system-ui, sans-serif;
+        font-weight: 800; font-size: clamp(1.9rem, 4.5vw, 2.6rem);
+        color: var(--acid-text); letter-spacing: -0.03em; line-height: 1;
+        display: block; margin-bottom: 0.5rem;
+      }
+      .stat .l {
+        font-family: "JetBrains Mono", monospace; font-size: 0.72rem;
+        color: var(--muted); display: block; line-height: 1.5;
+      }
+
+      /* ---------- resume ---------- */
+      .hero-cta { margin: 0 0 2.2rem; }
+      .rbtn {
+        font-family: "JetBrains Mono", monospace; font-weight: 700; font-size: 0.92rem;
+        border-radius: 999px; padding: 0.85rem 1.7rem; cursor: pointer;
+        display: inline-flex; align-items: center; gap: 0.65rem;
+        transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s, border-color 0.2s, color 0.2s;
+        border: 1px solid var(--acid);
+      }
+      .rbtn.primary { background: var(--acid); color: var(--acid-ink); }
+      .rbtn.primary:hover { transform: translateY(-2px); box-shadow: 0 14px 30px -12px rgba(120, 160, 0, 0.55); }
+      .rbtn.primary.done {
+        background: transparent; color: var(--acid-text); border-color: var(--acid-text);
+        box-shadow: none; transform: none;
+      }
+
+      .resume-grid {
+        display: grid; grid-template-columns: 1.05fr 0.95fr;
+        gap: 2.6rem; align-items: start;
+      }
+      .paper {
+        background: #ffffff; color: #1c221b;
+        border: 1px solid #dfe3d6; border-radius: 12px;
+        box-shadow: 0 30px 70px -30px rgba(0, 0, 0, 0.55), inset 0 3px 0 #4a7800;
+        padding: clamp(1.6rem, 4vw, 2.4rem);
+        position: relative; transform: rotate(-0.35deg);
+      }
+      .pv-tag {
+        position: absolute; top: -13px; right: 1.4rem;
+        font-family: "JetBrains Mono", monospace; font-size: 0.68rem; font-weight: 700;
+        background: #0a0d09; color: #c6ff4a;
+        padding: 0.3rem 0.75rem; border-radius: 6px;
+      }
+      .pv-name {
+        font-family: "Bricolage Grotesque", system-ui, sans-serif;
+        font-weight: 800; font-size: 1.75rem; letter-spacing: -0.03em;
+        margin: 0; color: #141a12;
+      }
+      .pv-title {
+        font-family: "JetBrains Mono", monospace; font-size: 0.8rem;
+        color: #5d6658; margin: 0.25rem 0 0.35rem;
+      }
+      .pv-contact {
+        font-family: "JetBrains Mono", monospace; font-size: 0.72rem;
+        color: #7c8474; margin: 0 0 1.2rem; word-break: break-all;
+      }
+      .pv-rule { border: none; border-top: 1px solid #e2e6d8; margin: 0 0 1.2rem; }
+      .pv-sec { margin-bottom: 1.25rem; }
+      .pv-sec:last-child { margin-bottom: 0.2rem; }
+      .pv-sec h4 {
+        font-family: "JetBrains Mono", monospace; font-size: 0.7rem; font-weight: 700;
+        letter-spacing: 0.12em; text-transform: uppercase;
+        color: #4a7800; margin: 0 0 0.6rem;
+      }
+      .pv-sec p { font-size: 0.78rem; line-height: 1.65; color: #333b2f; margin: 0; }
+      .pv-skills { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.35rem; }
+      .pv-skills li { font-size: 0.74rem; line-height: 1.55; color: #333b2f; }
+      .pv-skills b { color: #141a12; font-weight: 700; }
+      .pv-proj { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.5rem; }
+      .pv-proj li { font-size: 0.74rem; line-height: 1.5; color: #333b2f; padding-left: 1rem; position: relative; }
+      .pv-proj li::before { content: "▸"; position: absolute; left: 0; color: #4a7800; }
+      .pv-proj b { color: #141a12; font-weight: 700; }
+      .pv-foot {
+        margin: 1.3rem 0 0;
+        font-family: "JetBrains Mono", monospace; font-size: 0.66rem; color: #9aa094;
+      }
+      .resume-side .rs-k {
+        font-family: "JetBrains Mono", monospace; font-size: 0.82rem;
+        color: var(--acid-text); margin: 0 0 0.8rem;
+      }
+      .resume-side h3 {
+        font-family: "Bricolage Grotesque", system-ui, sans-serif;
+        font-size: clamp(1.7rem, 4vw, 2.3rem); font-weight: 700;
+        letter-spacing: -0.03em; margin: 0 0 1rem; line-height: 1.1;
+      }
+      .resume-side > p { color: var(--muted); margin: 0 0 1.6rem; max-width: 26rem; }
+      .resume-facts { list-style: none; margin: 1.6rem 0 0; padding: 0; display: grid; gap: 0.7rem; max-width: 28rem; }
+      .resume-facts li {
+        font-family: "JetBrains Mono", monospace; font-size: 0.8rem;
+        color: var(--muted); display: flex; gap: 0.7rem; align-items: baseline;
+        line-height: 1.55;
+      }
+      .resume-facts .tick { color: var(--acid-text); flex: none; }
+
+      /* ---------- footer ---------- */
+      footer {
+        margin-top: 7rem; border-top: 1px solid var(--line);
+        background: var(--bg-2); position: relative; overflow: clip;
+        scroll-margin-top: 4.5rem;
+      }
+      footer::before {
+        content: ""; position: absolute; inset: 0; pointer-events: none;
+        background: radial-gradient(40rem 18rem at 50% 120%, var(--glow), transparent 60%);
+      }
+      .foot-inner { position: relative; padding: 5.5rem 0 2.5rem; text-align: center; }
+      .foot-label { font-family: "JetBrains Mono", monospace; font-size: 0.82rem; color: var(--acid-text); margin: 0 0 1.2rem; }
+      .foot-big {
+        font-family: "Bricolage Grotesque", system-ui, sans-serif;
+        font-weight: 800; letter-spacing: -0.04em; line-height: 1;
+        font-size: clamp(2.6rem, 8vw, 5.2rem); margin: 0 0 1.3rem;
+      }
+      .foot-big .period { color: var(--acid-text); }
+      .foot-sub { color: var(--muted); max-width: 32rem; margin: 0 auto 2.4rem; }
+      .foot-work {
+        display: inline-flex; align-items: center; gap: 0.7rem;
+        font-family: "JetBrains Mono", monospace; font-size: 0.88rem; font-weight: 700;
+        background: var(--acid); color: var(--acid-ink);
+        border-radius: 999px; padding: 0.8rem 1.6rem;
+        border: none; cursor: pointer;
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+      }
+      .foot-work:hover { transform: translateY(-2px); box-shadow: 0 14px 30px -12px rgba(120, 160, 0, 0.55); }
+      .foot-work:active { transform: translateY(0); }
+      .foot-cta-row {
+        display: flex; gap: 0.8rem; justify-content: center; align-items: center;
+        flex-wrap: wrap; margin: 0;
+      }
+      .foot-resume {
+        display: inline-flex; align-items: center; gap: 0.6rem;
+        font-family: "JetBrains Mono", monospace; font-size: 0.88rem; font-weight: 700;
+        background: transparent; color: var(--acid-text);
+        border: 1px solid var(--acid-text); border-radius: 999px;
+        padding: 0.8rem 1.6rem; cursor: pointer;
+        transition: background 0.2s ease, transform 0.2s ease;
+        white-space: nowrap;
+      }
+      .foot-resume:hover { background: var(--acid-soft); transform: translateY(-2px); }
+      .foot-resume:active { transform: translateY(0); }
+      .foot-fine {
+        margin-top: 4rem; padding-top: 1.6rem; border-top: 1px solid var(--line-soft);
+        font-family: "JetBrains Mono", monospace; font-size: 0.76rem; color: var(--faint);
+        display: flex; flex-wrap: wrap; gap: 0.6rem 1.6rem; justify-content: center;
+      }
+
+      /* ---------- contact modal ---------- */
+      .contact-overlay {
+        position: fixed; inset: 0; z-index: 110;
+        background: rgba(3, 6, 3, 0.68);
+        backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px);
+        display: flex; align-items: center; justify-content: center;
+        padding: 1.1rem;
+      }
+      .contact-overlay[hidden] { display: none; }
+      .contact-card {
+        width: min(560px, 100%);
+        max-height: calc(100dvh - 2.5rem);
+        overflow-y: auto;
+        background: var(--panel);
+        border: 1px solid var(--line);
+        border-radius: 18px;
+        box-shadow: var(--shadow);
+      }
+      .contact-head {
+        display: flex; align-items: center; gap: 1rem;
+        padding: 1.05rem 1.2rem;
+        border-bottom: 1px solid var(--line-soft);
+        position: sticky; top: 0; z-index: 1;
+        background: var(--panel);
+      }
+      .c-dots { display: flex; gap: 0.45rem; }
+      .c-dots i { width: 11px; height: 11px; border-radius: 50%; display: block; }
+      .c-dots i:nth-child(1) { background: #ff5f57; }
+      .c-dots i:nth-child(2) { background: #febc2e; }
+      .c-dots i:nth-child(3) { background: #28c840; }
+      .contact-title {
+        font-family: "JetBrains Mono", monospace; font-size: 0.82rem;
+        color: var(--muted); margin-right: auto;
+      }
+      .contact-close {
+        font-family: "JetBrains Mono", monospace; font-size: 1rem; line-height: 1;
+        color: var(--muted); background: transparent;
+        border: 1px solid var(--line); border-radius: 8px;
+        width: 2rem; height: 2rem; cursor: pointer; flex: none;
+        display: inline-flex; align-items: center; justify-content: center;
+        transition: color 0.2s, border-color 0.2s;
+      }
+      .contact-close:hover { color: var(--ink); border-color: var(--acid-text); }
+      .contact-body { padding: 1.5rem 1.6rem 1.7rem; }
+      .c-tabs { display: flex; gap: 0.6rem; margin-bottom: 1.5rem; }
+      .c-tab {
+        font-family: "JetBrains Mono", monospace; font-size: 0.82rem; font-weight: 500;
+        background: var(--surface); color: var(--muted);
+        border: 1px solid var(--line); border-radius: 10px;
+        padding: 0.6rem 1.1rem; cursor: pointer;
+        transition: color 0.2s, border-color 0.2s, background 0.2s;
+      }
+      .c-tab:hover { color: var(--ink); border-color: var(--acid-text); }
+      .c-tab[aria-selected="true"] { background: var(--acid); border-color: var(--acid); color: var(--acid-ink); font-weight: 700; }
+      .c-prompt { font-family: "JetBrains Mono", monospace; font-size: 0.82rem; color: var(--muted); margin: 0 0 0.8rem; }
+      .c-prompt .prompt { color: var(--acid-text); }
+      .c-addr-box {
+        font-family: "JetBrains Mono", monospace; font-size: 1rem; font-weight: 700;
+        color: var(--ink);
+        background: var(--surface); border: 1px solid var(--line);
+        border-radius: 12px; padding: 1.05rem 1.2rem;
+        margin: 0 0 1.2rem; word-break: break-all;
+      }
+      .c-actions { display: flex; flex-wrap: wrap; gap: 0.7rem; margin: 0 0 1.2rem; }
+      .cbtn {
+        font-family: "JetBrains Mono", monospace; font-size: 0.85rem; font-weight: 700;
+        border-radius: 10px; padding: 0.75rem 1.2rem;
+        border: 1px solid var(--line); background: var(--chip-bg); color: var(--ink);
+        cursor: pointer; text-decoration: none;
+        transition: border-color 0.2s, background 0.2s, transform 0.15s;
+      }
+      .cbtn:hover { border-color: var(--acid-text); transform: translateY(-1px); }
+      .cbtn.primary { background: var(--acid); border-color: var(--acid); color: var(--acid-ink); }
+      .cbtn.ghost { background: transparent; color: var(--muted); font-weight: 500; }
+      .cbtn.done { background: var(--acid-soft); color: var(--acid-text); border-color: var(--acid-text); }
+      .c-note { font-family: "JetBrains Mono", monospace; font-size: 0.76rem; color: var(--faint); margin: 0; }
+      .field { display: grid; gap: 0.4rem; margin-bottom: 1rem; }
+      .field > span { font-family: "JetBrains Mono", monospace; font-size: 0.78rem; color: var(--muted); }
+      .field input, .field textarea {
+        font-family: inherit; font-size: 0.93rem; color: var(--ink);
+        background: var(--bg); border: 1px solid var(--line); border-radius: 10px;
+        padding: 0.7rem 0.95rem; width: 100%;
+      }
+      .field textarea { min-height: 120px; resize: vertical; }
+      .field input:focus, .field textarea:focus { outline: none; border-color: var(--acid-text); box-shadow: 0 0 0 3px var(--acid-soft); }
+      .form-actions { display: flex; flex-wrap: wrap; gap: 0.7rem 1rem; align-items: center; margin-top: 1.3rem; }
+      .form-hint { font-family: "JetBrains Mono", monospace; font-size: 0.74rem; color: var(--faint); }
+      .c-draft {
+        font-family: "JetBrains Mono", monospace; font-size: 0.8rem; line-height: 1.6;
+        color: var(--muted); background: var(--bg);
+        border: 1px solid var(--line); border-radius: 10px;
+        padding: 1rem 1.1rem; margin: 0.9rem 0 1.2rem;
+        white-space: pre-wrap; word-break: break-word; max-height: 220px; overflow-y: auto;
+      }
+      @media (max-width: 640px) {
+        .contact-body { padding: 1.2rem 1.2rem 1.4rem; }
+        .c-actions .cbtn, .form-actions .cbtn { flex: 1 1 100%; text-align: center; }
+      }
+
+      /* ---------- AI assistant ---------- */
+      .ai-fab {
+        position: fixed; right: 1.4rem; bottom: 1.4rem; z-index: 100;
+        width: 3.7rem; height: 3.7rem; border-radius: 50%;
+        background: var(--acid); color: var(--acid-ink);
+        border: 1px solid rgba(0, 0, 0, 0.22);
+        cursor: pointer;
+        display: flex; align-items: center; justify-content: center;
+        box-shadow: 0 14px 34px -12px rgba(0, 0, 0, 0.6);
+        transition: transform 0.2s ease;
+      }
+      .ai-fab:hover { transform: translateY(-3px); }
+      .ai-glyph {
+        font-family: "JetBrains Mono", monospace; font-weight: 700; font-size: 1.3rem;
+        letter-spacing: -0.08em; margin-left: -0.15rem;
+      }
+      .ai-badge {
+        position: absolute; top: 0.42rem; right: 0.38rem;
+        width: 0.6rem; height: 0.6rem; border-radius: 50%;
+        background: #ff5f57; border: 2px solid var(--acid);
+      }
+      .ai-badge::after {
+        content: ""; position: absolute; inset: -5px; border-radius: 50%;
+        border: 1px solid #ff5f57; animation: ping 1.8s ease-out infinite;
+      }
+      .ai-badge[hidden] { display: none; }
+
+      .ai-teaser {
+        position: fixed; right: 1.4rem; bottom: 5.6rem; z-index: 100;
+        max-width: 17.5rem;
+        background: var(--panel); border: 1px solid var(--line); border-radius: 14px;
+        box-shadow: var(--shadow);
+        display: flex; align-items: flex-start; gap: 0.4rem;
+      }
+      .ai-teaser[hidden] { display: none; }
+      .ai-teaser-open {
+        background: none; border: none; cursor: pointer; text-align: left;
+        display: flex; gap: 0.55rem; align-items: baseline;
+        font-family: "JetBrains Mono", monospace; font-size: 0.8rem; line-height: 1.5;
+        color: var(--ink); padding: 0.8rem 0 0.8rem 1rem;
+      }
+      .ai-teaser-open b { color: var(--acid-text); font-weight: 700; }
+      .ai-teaser-close {
+        background: none; border: none; cursor: pointer;
+        color: var(--faint); font-size: 1.15rem; line-height: 1; padding: 0.4rem 0.55rem;
+      }
+      .ai-teaser-close:hover { color: var(--ink); }
+
+      .ai-panel {
+        position: fixed; z-index: 105; right: 1.4rem; bottom: 5.6rem;
+        width: min(410px, calc(100vw - 2.8rem));
+        height: min(600px, calc(100dvh - 9rem));
+        background: var(--panel); border: 1px solid var(--line); border-radius: 18px;
+        box-shadow: var(--shadow);
+        display: flex; flex-direction: column; overflow: hidden;
+      }
+      .ai-panel[hidden] { display: none; }
+      @media (prefers-reduced-motion: no-preference) {
+        .ai-panel.ai-in { transform-origin: bottom right; animation: aiIn 0.28s cubic-bezier(0.2, 0.9, 0.3, 1.12); }
+      }
+      @keyframes aiIn {
+        from { opacity: 0; transform: translateY(18px) scale(0.96); }
+        to { opacity: 1; transform: none; }
+      }
+      .ai-phead {
+        display: flex; align-items: center; gap: 0.8rem;
+        padding: 0.85rem 1.1rem;
+        border-bottom: 1px solid var(--line-soft);
+        background: var(--bg-2);
+        flex: none;
+      }
+      .ai-ptitle {
+        font-family: "JetBrains Mono", monospace; font-weight: 700; font-size: 0.92rem;
+        margin-right: auto; display: flex; flex-direction: column; line-height: 1.45;
+      }
+      .ai-online {
+        font-size: 0.68rem; font-weight: 500; color: var(--muted);
+        display: flex; align-items: center; gap: 0.4rem;
+      }
+      .dot-mini { width: 7px; height: 7px; border-radius: 50%; background: var(--acid-text); display: inline-block; }
+      .ai-pclose {
+        font-family: "JetBrains Mono", monospace; font-size: 1.1rem; line-height: 1;
+        color: var(--muted); background: transparent;
+        border: 1px solid var(--line); border-radius: 8px;
+        width: 2rem; height: 2rem; cursor: pointer; flex: none;
+        display: inline-flex; align-items: center; justify-content: center;
+      }
+      .ai-pclose:hover { color: var(--ink); border-color: var(--acid-text); }
+
+      .ai-msgs {
+        flex: 1 1 auto; min-height: 0;
+        overflow-y: auto; overscroll-behavior: contain;
+        display: flex; flex-direction: column; gap: 0.65rem;
+        padding: 1.1rem 1rem;
+      }
+      .ai-msgs::-webkit-scrollbar { width: 8px; }
+      .ai-msgs::-webkit-scrollbar-thumb { background: var(--line); border-radius: 8px; }
+      .ai-msg {
+        max-width: 88%; padding: 0.68rem 0.95rem;
+        font-size: 0.9rem; line-height: 1.6;
+        border-radius: 14px; overflow-wrap: anywhere;
+      }
+      @media (prefers-reduced-motion: no-preference) {
+        .ai-msg { animation: aiMsg 0.28s ease; }
+      }
+      @keyframes aiMsg {
+        from { opacity: 0; transform: translateY(8px); }
+        to { opacity: 1; transform: none; }
+      }
+      .ai-msg.bot { align-self: flex-start; background: var(--surface); border: 1px solid var(--line-soft); border-top-left-radius: 4px; }
+      .ai-msg.user { align-self: flex-end; background: var(--acid); color: var(--acid-ink); border-bottom-right-radius: 4px; font-weight: 500; }
+      .ai-msg.bot strong { color: var(--acid-text); }
+      .ai-code {
+        font-family: "JetBrains Mono", monospace; font-size: 0.82em;
+        background: var(--chip-bg); border: 1px solid var(--line);
+        border-radius: 6px; padding: 0.1em 0.45em;
+        color: var(--ink);
+      }
+      .ai-process {
+        font-family: "JetBrains Mono", monospace; font-size: 0.8rem;
+        background: var(--term-bg); border: 1px solid var(--line);
+        border-radius: 12px; padding: 0.9rem 1rem; margin: 0.1rem 0;
+        color: #d5dccf;
+      }
+      .ai-proc-head { color: #8b9381; font-size: 0.76rem; }
+      .ai-proc-head .tp { color: var(--acid); }
+      .ai-process ol { list-style: none; margin: 0.75rem 0 0; padding: 0; display: grid; gap: 0.75rem; }
+      .ai-process li { display: grid; grid-template-columns: 2.1rem 1fr; gap: 0.6rem; align-items: start; }
+      .ai-step { color: var(--acid); font-weight: 700; }
+      .ai-process strong { color: var(--acid); display: block; margin-bottom: 0.15rem; }
+      .ai-process p { margin: 0; color: #a7b09e; font-family: "Sora", sans-serif; font-size: 0.82rem; line-height: 1.55; }
+
+      .ai-brief { font-family: "JetBrains Mono", monospace; font-size: 0.8rem; }
+      .ai-brief-row {
+        display: grid; grid-template-columns: 5.6rem 1fr; gap: 0.6rem;
+        padding: 0.42rem 0; border-bottom: 1px dashed var(--line);
+      }
+      .ai-brief-row:last-child { border-bottom: none; }
+      .ai-brief-row .k { color: var(--faint); }
+
+      .ai-typing {
+        display: flex; gap: 0.35rem; align-self: flex-start;
+        background: var(--surface); border: 1px solid var(--line-soft);
+        border-radius: 14px; border-top-left-radius: 4px;
+        padding: 0.9rem 1.1rem;
+      }
+      .ai-typing i { width: 7px; height: 7px; border-radius: 50%; background: var(--faint); }
+      @media (prefers-reduced-motion: no-preference) {
+        .ai-typing i { animation: aiBlink 1s infinite; }
+        .ai-typing i:nth-child(2) { animation-delay: 0.15s; }
+        .ai-typing i:nth-child(3) { animation-delay: 0.3s; }
+      }
+      @keyframes aiBlink { 0%, 100% { opacity: 0.25; } 50% { opacity: 1; } }
+
+      .ai-chips { display: flex; flex-wrap: wrap; gap: 0.45rem; padding: 0.35rem 1rem 0.2rem; flex: none; }
+      .ai-chips:empty { display: none; }
+      .ai-chip {
+        font-family: "JetBrains Mono", monospace; font-size: 0.74rem; font-weight: 500;
+        padding: 0.5rem 0.85rem; border-radius: 999px;
+        border: 1px solid var(--line); background: var(--surface); color: var(--ink);
+        cursor: pointer;
+        transition: border-color 0.2s, color 0.2s;
+      }
+      .ai-chip:hover { border-color: var(--acid-text); color: var(--acid-text); }
+
+      .ai-form { display: flex; gap: 0.55rem; padding: 0.75rem 1rem 1rem; flex: none; }
+      .ai-input {
+        flex: 1; min-width: 0;
+        font-family: inherit; font-size: 0.9rem; color: var(--ink);
+        background: var(--bg); border: 1px solid var(--line); border-radius: 12px;
+        padding: 0.7rem 0.95rem;
+      }
+      .ai-input:focus { outline: none; border-color: var(--acid-text); box-shadow: 0 0 0 3px var(--acid-soft); }
+      .ai-send {
+        width: 2.9rem; border-radius: 12px; flex: none;
+        border: 1px solid var(--acid); background: var(--acid); color: var(--acid-ink);
+        font-weight: 700; font-size: 1.05rem; cursor: pointer;
+      }
+
+      .foot-ai { margin-top: 1.4rem; }
+      .ai-open-link {
+        font-family: "JetBrains Mono", monospace; font-size: 0.8rem; line-height: 1.6;
+        color: var(--muted); background: none; border: none; cursor: pointer;
+        padding: 0.3rem 0.5rem;
+      }
+      .ai-open-link:hover { color: var(--acid-text); }
+      .ai-open-link .prompt { color: var(--acid-text); margin-right: 0.45rem; }
+
+      @media (max-width: 640px) {
+        .ai-fab { right: 1rem; bottom: 1rem; }
+        .ai-teaser { right: 1rem; bottom: 5.2rem; }
+        .ai-panel { right: 0.7rem; left: 0.7rem; bottom: 0.7rem; width: auto; height: min(78dvh, 600px); }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        .ai-badge::after { animation: none; }
+        .ai-panel.ai-in { animation: none; }
+        .ai-msg { animation: none; }
+        .ai-typing i { animation: none; }
+      }
+
+
+      /* Visible by default (progressive enhancement). JS adds .wait only to
+         below-fold elements, then flips them to .go on scroll. */
+      .reveal { opacity: 1; transform: none; }
+      @media (prefers-reduced-motion: no-preference) {
+        .reveal.wait { opacity: 0; transform: translateY(18px); }
+        .reveal.go {
+          opacity: 1; transform: none;
+          transition: opacity 0.7s ease, transform 0.7s ease;
+        }
+        .reveal.go.d1 { transition-delay: 0.08s; }
+        .reveal.go.d2 { transition-delay: 0.16s; }
+        .reveal.go.d3 { transition-delay: 0.24s; }
+      }
+
+      /* ---------- responsive ---------- */
+      @media (max-width: 960px) {
+        .hero-grid { grid-template-columns: 1fr; gap: 2.6rem; }
+        .term-body { min-height: 0; }
+        .code-grid { grid-template-columns: 1fr; }
+      }
+      @media (max-width: 640px) {
+        section.block { padding: 4.2rem 0 1.5rem; scroll-margin-top: 7rem; }
+        footer { scroll-margin-top: 7rem; }
+        .hero { padding: 9rem 0 3.5rem; }
+        .nav-inner { flex-wrap: wrap; gap: 0.35rem 0.7rem; padding: 0.65rem 0 0.7rem; }
+        .nav-inner nav { order: 3; flex: 1 1 100%; }
+        .nav-links { justify-content: space-between; }
+        .brand { font-size: 0.92rem; order: 1; }
+        .status-pill { order: 2; }
+        .status-pill .txt { display: inline; }
+        .nav-links a { padding: 0.45rem 0.2rem; font-size: 0.7rem; }
+        .row { grid-template-columns: auto 1fr; gap: 1rem; }
+        .row .tags { display: none; }
+        .row .arrow { display: none; }
+        .panel-head { flex-direction: column; align-items: flex-start; }
+        .panel-level { text-align: left; margin-left: 0; }
+        .meter { width: 150px; }
+        .codecard pre { font-size: 0.76rem; padding: 1.1rem 1rem; }
+        .foot-inner { text-align: left; }
+        .foot-sub { margin-left: 0; }
+        .foot-fine { justify-content: flex-start; }
+        .foot-cta-row { justify-content: flex-start; }
+        .stats-band { grid-template-columns: repeat(2, 1fr); }
+        .stat + .stat { border-left: none; }
+        .stat:nth-child(2n) { border-left: 1px solid var(--line-soft); }
+        .stat:nth-child(-n+2) { border-bottom: 1px solid var(--line-soft); }
+        .resume-grid { grid-template-columns: 1fr; }
+        .paper { transform: none; }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        html { scroll-behavior: auto; }
+        .ticker-track, .scroll-cue .line::after, .dot::after, .brand .cursor, .caret::after { animation: none; }
+        .row:hover { transform: none; }
+      }
+    </style>
+  </head>
+  <body>
+    <a class="skip" href="#main">Skip to content</a>
+    <div class="progress" id="progress" aria-hidden="true"></div>
+
+    <header class="nav">
+      <div class="nav-inner">
+        <a class="brand" href="#top" aria-label="Muhammad Umar — home">mu://<span class="cursor" aria-hidden="true">▋</span></a>
+        <nav aria-label="Primary">
+          <ul class="nav-links">
+            <li><a href="#stack" data-nav="stack">./stack</a></li>
+            <li><a href="#projects" data-nav="projects">./projects</a></li>
+            <li><a href="#ship" data-nav="ship">./ship</a></li>
+            <li><a href="#code" data-nav="code">./code</a></li>
+            <li><a href="#resume" data-nav="resume">./resume</a></li>
+            <li><a href="#hire" data-nav="hire">./hire</a></li>
+          </ul>
+        </nav>
+        <button class="status-pill" type="button" data-contact aria-label="Open to work — open contact options"><span class="dot" aria-hidden="true"></span><span class="txt">open to work</span></button>
+      </div>
+    </header>
+
+    <main id="main">
+      <!-- ================= HERO ================= -->
+      <section class="hero" id="top" aria-label="Introduction">
+        <div class="wrap hero-grid">
+          <div>
+            <p class="hero-badge"><b>&lt;/&gt;</b> full-stack engineer · shipping web apps that scale</p>
+            <h1 class="name">Muhammad<br />Umar<span class="period">.</span></h1>
+            <p class="role"><span class="prompt" aria-hidden="true">//</span> full-stack software engineer</p>
+            <p class="bio">Software engineer building <strong>scalable web applications</strong> and interactive systems. Specialized in modern frontends (<strong>Next.js, React</strong>) and high-performance Python backends (<strong>FastAPI, Flask</strong>).</p>
+            <ul class="hero-meta">
+              <li><span class="tag" aria-hidden="true">$ stack</span><span>next.js × react × fastapi × python × tailwind</span></li>
+              <li><span class="tag" aria-hidden="true">$ pipeline</span><span>github → vercel → production</span></li>
+              <li><span class="tag" aria-hidden="true">$ mode</span><span>build fast, ship faster, break nothing</span></li>
+            </ul>
+            <p class="hero-cta"><button class="rbtn primary" type="button" data-resume-download><span aria-hidden="true">↓</span> download resume.pdf</button></p>
+            <a class="scroll-cue" href="#stack">scroll to explore <span class="line" aria-hidden="true"></span></a>
+          </div>
+
+          <div class="terminal reveal" role="region" aria-label="Command line introduction">
+            <div class="term-head" aria-hidden="true">
+              <span class="term-dots"><i></i><i></i><i></i></span>
+              <span class="term-title">muhammad@dev — zsh</span>
+            </div>
+            <div class="term-body" id="term" aria-hidden="true"></div>
+            <p class="sr-only">Terminal output: whoami — Muhammad Umar, full-stack software engineer. Stack: Next.js, React, JavaScript, FastAPI, Python, Tailwind. Status: open to work.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= TICKER ================= -->
+      <div class="ticker" aria-hidden="true">
+        <div class="ticker-track" id="ticker"></div>
+      </div>
+
+      <!-- ================= STACK ================= -->
+      <section class="block" id="stack" aria-labelledby="stack-title">
+        <div class="wrap">
+          <p class="section-label reveal">01 · ~/stack</p>
+          <h2 class="section-title reveal" id="stack-title">the stack<span style="color:var(--acid-text)">.</span></h2>
+          <p class="section-sub reveal">Everything I reach for when it's time to build. Pick a category — this is the real toolkit, no buzzword padding.</p>
+
+          <div class="tablist" role="tablist" aria-label="Skill categories" id="tablist">
+            <button class="tab" role="tab" id="tab-frontend" aria-controls="panel-frontend" aria-selected="true">./frontend</button>
+            <button class="tab" role="tab" id="tab-backend" aria-controls="panel-backend" aria-selected="false" tabindex="-1">./backend</button>
+            <button class="tab" role="tab" id="tab-devops" aria-controls="panel-devops" aria-selected="false" tabindex="-1">./devops</button>
+          </div>
+
+          <div class="tabpanel" role="tabpanel" id="panel-frontend" aria-labelledby="tab-frontend">
+            <div class="panel-head">
+              <h3 class="panel-cat">Frontend Development</h3>
+              <div class="panel-level">
+                <span class="lvl-label">Proficient / Advanced</span>
+                <div class="meter" role="img" aria-label="Proficiency: Proficient / Advanced"><span style="width:90%"></span></div>
+              </div>
+            </div>
+            <p class="panel-note">My home turf. Component-driven interfaces with React and Next.js — fast, responsive, and styled with Tailwind until it looks expensive.</p>
+            <ul class="chips">
+              <li>Next.js</li><li>React.js</li><li>JavaScript (ES6+)</li><li>HTML5</li><li>CSS3</li><li>Tailwind CSS</li>
+            </ul>
+          </div>
+
+          <div class="tabpanel" role="tabpanel" id="panel-backend" aria-labelledby="tab-backend" hidden>
+            <div class="panel-head">
+              <h3 class="panel-cat">Backend &amp; APIs</h3>
+              <div class="panel-level">
+                <span class="lvl-label">Proficient / Expanding</span>
+                <div class="meter" role="img" aria-label="Proficiency: Proficient / Expanding"><span style="width:78%"></span></div>
+              </div>
+            </div>
+            <p class="panel-note">Python backends built for speed. Pairing Next.js with FastAPI gives me a modern full-stack setup: async by default, validated everywhere.</p>
+            <ul class="chips">
+              <li>Python</li><li>FastAPI</li><li>Flask</li><li>RESTful APIs</li><li>Pydantic</li><li>PHP</li><li>Async Architecture</li>
+            </ul>
+            <div class="callouts">
+              <div class="callout">
+                <span class="k">FASTAPI</span>
+                <p><strong>High-performance Python backends:</strong> rapid async request handling, auto-generated OpenAPI documentation (Swagger UI), and strict data validation via Pydantic.</p>
+              </div>
+              <div class="callout">
+                <span class="k">AI-READY</span>
+                <p><strong>AI &amp; real-time ready:</strong> FastAPI is the industry standard for serving machine learning models, agentic AI backends, and streaming endpoints.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="tabpanel" role="tabpanel" id="panel-devops" aria-labelledby="tab-devops" hidden>
+            <div class="panel-head">
+              <h3 class="panel-cat">Databases &amp; DevOps</h3>
+              <div class="panel-level">
+                <span class="lvl-label">Proficient</span>
+                <div class="meter" role="img" aria-label="Proficiency: Proficient"><span style="width:72%"></span></div>
+              </div>
+            </div>
+            <p class="panel-note">The boring-but-critical stuff. Code leaves GitHub and lands on production fast — domains wired, SSL green, stores tuned.</p>
+            <ul class="chips">
+              <li>Git</li><li>GitHub</li><li>Vercel</li><li>Hostinger (DNS/SSL setup)</li><li>Liquid (Shopify)</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= PROJECTS ================= -->
+      <section class="block" id="projects" aria-labelledby="projects-title">
+        <div class="wrap">
+          <p class="section-label reveal">02 · ~/projects</p>
+          <h2 class="section-title reveal" id="projects-title">built &amp; shipped<span style="color:var(--acid-text)">.</span></h2>
+          <p class="section-sub reveal">The real repos — deployed platforms, AI systems, and automation pipelines, not tutorial demos.</p>
+          <div class="rows">
+            <article class="row project reveal">
+              <span class="num">01</span>
+              <div>
+                <h3>Soboldent</h3>
+                <p class="p-domain">Full-Stack Web Architecture &amp; Cloud Deployment</p>
+                <p>Engineered and deployed an entertainment brand platform to replace legacy infrastructure. Managed full data and local media asset migration from WordPress, restructured asset delivery pipelines, and resolved production deployment challenges including custom DNS records, reverse proxy routing, and SSL/TLS encryption.</p>
+                <ul class="stack-chips"><li>Next.js</li><li>React</li><li>Node.js</li><li>Hostinger</li><li>DNS &amp; SSL Configuration</li></ul>
+              </div>
+            </article>
+            <article class="row project reveal">
+              <span class="num">02</span>
+              <div>
+                <h3>AEGIS</h3>
+                <p class="p-domain">Agentic AI &amp; Crisis Intelligence Systems</p>
+                <p>Developed an AI-driven crisis intelligence platform for the #AISeekho 2026 Google Antigravity Hackathon. Orchestrated multi-source data processing and agentic reasoning to autonomously monitor and evaluate emergency data streams. Handled end-to-end system architecture, database design, and implemented comprehensive trace logging for AI reasoning transparency.</p>
+                <ul class="stack-chips"><li>Python</li><li>FastAPI</li><li>Gemini API</li><li>Google Antigravity</li><li>System Design</li></ul>
+              </div>
+            </article>
+            <article class="row project reveal">
+              <span class="num">03</span>
+              <div>
+                <h3>YT Comment Bot</h3>
+                <p class="p-domain">API Automation &amp; Workflow Orchestration</p>
+                <p>Developed an automated engagement engine that interacts programmatically with the YouTube ecosystem. Engineered scripts to monitor, filter, and manage comment interactions across targeted channels while efficiently handling API rate limits, quota management, and authentication token refreshes.</p>
+                <ul class="stack-chips"><li>Python</li><li>YouTube Data API v3</li><li>OAuth 2.0</li><li>Async Scheduling</li></ul>
+              </div>
+            </article>
+            <article class="row project reveal">
+              <span class="num">04</span>
+              <div>
+                <h3>N11 Pictures</h3>
+                <p class="p-domain">Media Production Showcase &amp; Frontend Architecture</p>
+                <p>Engineered a high-performance digital portfolio platform tailored for a photography and cinematography studio. Focused heavily on minimizing layout shifts, optimizing high-resolution image delivery networks, and building fluid, responsive user interface transitions.</p>
+                <ul class="stack-chips"><li>Next.js</li><li>React</li><li>Tailwind CSS</li><li>Media Optimization Pipelines</li></ul>
+              </div>
+            </article>
+            <article class="row project reveal">
+              <span class="num">05</span>
+              <div>
+                <h3>Veyro Official Store</h3>
+                <p class="p-domain">E-Commerce Architecture &amp; Merchant Tooling</p>
+                <p>Designed and engineered a custom Shopify e-commerce storefront. Developed modular Liquid code sections for dynamic product displays and integrated automated backend payment-fetching microservices to securely verify transactions and trigger order approval states.</p>
+                <ul class="stack-chips"><li>Shopify Liquid</li><li>JavaScript</li><li>Custom Webhooks</li><li>RESTful APIs</li></ul>
+              </div>
+            </article>
+            <article class="row project reveal">
+              <span class="num">06</span>
+              <div>
+                <h3>UZ Lead Scraper</h3>
+                <p class="p-domain">Web Extraction &amp; Data Engineering</p>
+                <p>Built a high-performance web scraping utility designed for automated B2B lead generation. Engineered concurrent data extraction pipelines to programmatically navigate dynamic directories, harvest business intelligence, bypass basic anti-bot measures, and format data into structured exports.</p>
+                <ul class="stack-chips"><li>Python</li><li>Web Automation (Playwright/BeautifulSoup)</li><li>Data Pipelines</li></ul>
+              </div>
+            </article>
+            <article class="row project reveal">
+              <span class="num">07</span>
+              <div>
+                <h3>Fleet Trace</h3>
+                <p class="p-domain">Logistics Telemetry &amp; Real-Time Tracking</p>
+                <p>Developed a logistical tracking interface engineered for fleet monitoring and route optimization. Implemented live data visualization features to process, map, and display vehicle telemetry coordinates and operational statuses for active deployments.</p>
+                <ul class="stack-chips"><li>Web/Geospatial APIs</li><li>Python Backend</li><li>Real-time Data Sync</li></ul>
+              </div>
+            </article>
+            <article class="row project reveal">
+              <span class="num">08</span>
+              <div>
+                <h3>Insta Flow</h3>
+                <p class="p-domain">Social Media Automation &amp; Task Distribution</p>
+                <p>Engineered an automated workflow distribution tool for social media management. Designed backend scripts to handle scheduled content distribution, account session persistence, and autonomous user interactions, significantly reducing manual account management overhead.</p>
+                <ul class="stack-chips"><li>Python</li><li>Headless Automation</li><li>Task Queues</li></ul>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= SHIP ================= -->
+      <section class="block" id="ship" aria-labelledby="ship-title">
+        <div class="wrap">
+          <p class="section-label reveal">03 · ~/ship</p>
+          <h2 class="section-title reveal" id="ship-title">what i ship<span style="color:var(--acid-text)">.</span></h2>
+          <p class="section-sub reveal">Not a list of tutorials I watched — the actual kind of work I produce, end to end.</p>
+          <div class="rows">
+            <article class="row reveal">
+              <span class="num">01</span>
+              <div>
+                <h3>scalable web apps</h3>
+                <p>Full-stack products from the Next.js UI down to the FastAPI layer — architected to handle growth, not just the launch day.</p>
+              </div>
+              <div class="tags"><span>full-stack</span><span class="arrow" aria-hidden="true">→</span></div>
+            </article>
+            <article class="row reveal d1">
+              <span class="num">02</span>
+              <div>
+                <h3>modern frontends</h3>
+                <p>Component-driven interfaces in React and Next.js — fast, responsive, accessible, and styled with Tailwind CSS.</p>
+              </div>
+              <div class="tags"><span>react · next.js</span><span class="arrow" aria-hidden="true">→</span></div>
+            </article>
+            <article class="row reveal d2">
+              <span class="num">03</span>
+              <div>
+                <h3>high-performance python apis</h3>
+                <p>Async FastAPI and Flask services with strict Pydantic validation, clean REST design, and auto-generated Swagger docs.</p>
+              </div>
+              <div class="tags"><span>fastapi · flask</span><span class="arrow" aria-hidden="true">→</span></div>
+            </article>
+            <article class="row reveal d3">
+              <span class="num">04</span>
+              <div>
+                <h3>ship &amp; maintain</h3>
+                <p>Git/GitHub workflows, Vercel deploys, DNS and SSL on Hostinger, and Liquid tweaks for Shopify storefronts.</p>
+              </div>
+              <div class="tags"><span>devops · vercel</span><span class="arrow" aria-hidden="true">→</span></div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= CODE ================= -->
+      <section class="block" id="code" aria-labelledby="code-title">
+        <div class="wrap">
+          <p class="section-label reveal">04 · ~/src</p>
+          <h2 class="section-title reveal" id="code-title">code, not promises<span style="color:var(--acid-text)">.</span></h2>
+          <p class="section-sub reveal">A taste of the toolkit in motion: a validated FastAPI endpoint on one side, a Next.js client calling it on the other. Copy either — they're yours now.</p>
+          <div class="code-grid">
+            <div class="codecard">
+              <div class="code-head">
+                <span class="fname">api/main.py</span>
+                <button class="copy-btn" data-target="code-py">copy</button>
+              </div>
+<pre><code id="code-py"><span class="tok-k">from</span> datetime <span class="tok-k">import</span> date
+
+<span class="tok-k">from</span> fastapi <span class="tok-k">import</span> FastAPI
+<span class="tok-k">from</span> pydantic <span class="tok-k">import</span> BaseModel
+<span class="tok-k">from</span> pydantic <span class="tok-k">import</span> EmailStr
+
+app = <span class="tok-f">FastAPI</span>(title=<span class="tok-s">"portfolio-api"</span>)
+
+
+<span class="tok-k">class</span> <span class="tok-f">Subscriber</span>(BaseModel):
+    name: str
+    email: EmailStr
+    joined: date | <span class="tok-k">None</span> = <span class="tok-k">None</span>
+
+
+<span class="tok-d">@app.post</span>(<span class="tok-s">"/v1/subscribers"</span>)
+<span class="tok-k">async def</span> <span class="tok-f">subscribe</span>(data: <span class="tok-f">Subscriber</span>):
+    <span class="tok-s">"""Validated by Pydantic."""</span>
+    <span class="tok-k">return</span> {<span class="tok-s">"ok"</span>: <span class="tok-k">True</span>}</code></pre>
+            </div>
+            <div class="codecard">
+              <div class="code-head">
+                <span class="fname">app/subscribe/page.tsx</span>
+                <button class="copy-btn" data-target="code-tsx">copy</button>
+              </div>
+<pre><code id="code-tsx"><span class="tok-s">"use client"</span>;
+<span class="tok-k">import</span> { useState } <span class="tok-k">from</span> <span class="tok-s">"react"</span>;
+
+<span class="tok-k">export default function</span> <span class="tok-f">Subscribe</span>() {
+  <span class="tok-k">const</span> [done, setDone] = <span class="tok-f">useState</span>(<span class="tok-k">false</span>);
+
+  <span class="tok-k">async function</span> <span class="tok-f">submit</span>(e) {
+    e.<span class="tok-f">preventDefault</span>();
+    <span class="tok-k">const</span> email = e.target.email.value;
+    <span class="tok-k">await</span> <span class="tok-f">fetch</span>(<span class="tok-s">"/v1/subscribers"</span>, {
+      method: <span class="tok-s">"POST"</span>,
+      body: <span class="tok-s">JSON.stringify</span>({ email }),
+    });
+    <span class="tok-f">setDone</span>(<span class="tok-k">true</span>);
+  }
+
+  <span class="tok-k">if</span> (done) <span class="tok-k">return</span> <span class="tok-s">&lt;p&gt;you're in.&lt;/p&gt;</span>;
+  <span class="tok-k">return</span> (
+    <span class="tok-s">&lt;form</span> onSubmit={submit}<span class="tok-s">&gt;</span>
+      <span class="tok-s">&lt;input</span> name=<span class="tok-s">"email"</span> required <span class="tok-s">/&gt;</span>
+      <span class="tok-s">&lt;button&gt;</span>subscribe<span class="tok-s">&lt;/button&gt;</span>
+    <span class="tok-s">&lt;/form&gt;</span>
+  );
+}</code></pre>
+            </div>
+          </div>
+          <p class="code-note reveal"><span class="prompt" aria-hidden="true">→</span> async by default, validated everywhere, documented for free.</p>
+        </div>
+      </section>
+
+      <!-- ================= RESUME ================= -->
+      <section class="block" id="resume" aria-labelledby="resume-title">
+        <div class="wrap">
+          <p class="section-label reveal">05 · ~/hire-kit</p>
+          <h2 class="section-title reveal" id="resume-title">the resume<span style="color:var(--acid-text)">.</span></h2>
+          <p class="section-sub reveal">For the busy recruiter: the whole pitch on one page. Preview it here, or grab the PDF — generated fresh in your browser, nothing invented, nothing leaves this tab.</p>
+
+          <div class="stats-band reveal" role="list" aria-label="Portfolio by the numbers">
+            <div class="stat" role="listitem"><span class="n">08</span><span class="l">shipped projects</span></div>
+            <div class="stat" role="listitem"><span class="n">18</span><span class="l">tools &amp; frameworks</span></div>
+            <div class="stat" role="listitem"><span class="n">03</span><span class="l">stack categories</span></div>
+            <div class="stat" role="listitem"><span class="n">04</span><span class="l">steps, brief → launch</span></div>
+          </div>
+
+          <div class="resume-grid">
+            <div class="paper reveal" role="img" aria-label="Condensed preview of the one-page PDF resume: name, summary, skills, and selected projects">
+              <span class="pv-tag" aria-hidden="true">preview</span>
+              <p class="pv-name">Muhammad Umar</p>
+              <p class="pv-title">Full-Stack Software Engineer</p>
+              <p class="pv-contact">umarsoftwaredevelop@gmail.com · open to work — full-time, contract, freelance</p>
+              <hr class="pv-rule" />
+              <div class="pv-sec">
+                <h4>Professional summary</h4>
+                <p>Full-stack software engineer building scalable web applications and interactive systems: modern frontends (Next.js, React) and high-performance Python backends (FastAPI, Flask) — from UI to validated async APIs, deployed and maintained end to end.</p>
+              </div>
+              <div class="pv-sec">
+                <h4>Technical skills</h4>
+                <ul class="pv-skills">
+                  <li><b>Frontend:</b> Next.js · React.js · JavaScript (ES6+) · HTML5 · CSS3 · Tailwind CSS</li>
+                  <li><b>Backend &amp; APIs:</b> Python · FastAPI · Flask · RESTful APIs · Pydantic · PHP · async architecture</li>
+                  <li><b>DevOps &amp; tooling:</b> Git · GitHub · Vercel · Hostinger (DNS/SSL) · Shopify Liquid</li>
+                </ul>
+              </div>
+              <div class="pv-sec">
+                <h4>Selected projects</h4>
+                <ul class="pv-proj">
+                  <li><b>Soboldent</b> — full-stack platform migration &amp; cloud deployment</li>
+                  <li><b>AEGIS</b> — agentic AI crisis intelligence (#AISeekho 2026 hackathon build)</li>
+                  <li><b>YT Comment Bot</b> — YouTube automation &amp; workflow orchestration</li>
+                  <li><b>N11 Pictures</b> — high-performance studio showcase</li>
+                  <li><b>Veyro Official Store</b> — Shopify e-commerce architecture</li>
+                  <li><b>UZ Lead Scraper</b> — web extraction &amp; B2B lead pipelines</li>
+                  <li><b>Fleet Trace</b> — real-time logistics telemetry</li>
+                  <li><b>Insta Flow</b> — social media automation</li>
+                </ul>
+              </div>
+              <p class="pv-foot">condensed preview — the PDF expands every project with details.</p>
+            </div>
+
+            <div class="resume-side reveal d1">
+              <p class="rs-k">$ download resume.pdf</p>
+              <h3>one page.<br />ready to forward.</h3>
+              <p>The recruiter edition of this site: summary, full technical stack, and all eight projects with real outcomes — laid out as a clean, ATS-friendly one-pager. The PDF is assembled in this tab the moment you click.</p>
+              <p style="margin:0 0 0.4rem"><button class="rbtn primary" type="button" data-resume-download><span aria-hidden="true">↓</span> download resume.pdf</button></p>
+              <ul class="resume-facts">
+                <li><span class="tick" aria-hidden="true">✓</span>one page · ATS-friendly · fully selectable text</li>
+                <li><span class="tick" aria-hidden="true">✓</span>every line maps to shipped work on this page</li>
+                <li><span class="tick" aria-hidden="true">✓</span>no account, no upload — generated right here</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- ================= FOOTER ================= -->
+    <footer id="hire" aria-labelledby="hire-title">
+      <div class="wrap foot-inner">
+        <p class="foot-label reveal">06 · ~/next</p>
+        <h2 class="foot-big reveal" id="hire-title">let's build<br />something real<span class="period">.</span></h2>
+        <p class="foot-sub reveal">Full-time roles, freelance collabs, ambitious side quests — my editor is warm and my commits are atomic. Come say hi.</p>
+        <p class="reveal foot-cta-row"><button class="foot-work" type="button" data-contact><span class="dot" aria-hidden="true"></span> open to work</button><button class="foot-resume" type="button" data-resume-download><span aria-hidden="true">↓</span> resume.pdf</button></p>
+        <p class="foot-ai reveal"><button type="button" class="ai-open-link" data-ai-open><span class="prompt" aria-hidden="true">$</span>mu --scope-project — my AI assistant can scope your project and walk you through the process</button></p>
+        <div class="foot-fine">
+          <span>© <span id="year">2026</span> Muhammad Umar</span>
+        </div>
+      </div>
+    </footer>
+
+    <!-- ================= AI ASSISTANT ================= -->
+    <button class="ai-fab" id="ai-fab" type="button" aria-label="Chat with Mu, the AI assistant" aria-expanded="false" aria-controls="ai-panel">
+      <span class="ai-glyph" aria-hidden="true">&gt;_</span>
+      <span class="ai-badge" id="ai-badge" aria-hidden="true" hidden></span>
+    </button>
+
+    <div class="ai-teaser" id="ai-teaser" hidden>
+      <button type="button" class="ai-teaser-open" id="ai-teaser-open"><b>mu</b><span>got a project in mind? let's scope it →</span></button>
+      <button type="button" class="ai-teaser-close" id="ai-teaser-close" aria-label="Dismiss suggestion">×</button>
+    </div>
+
+    <section class="ai-panel" id="ai-panel" role="dialog" aria-modal="false" aria-labelledby="ai-title" hidden>
+      <header class="ai-phead">
+        <span class="c-dots" aria-hidden="true"><i></i><i></i><i></i></span>
+        <div class="ai-ptitle" id="ai-title">mu.ai <span class="ai-online"><span class="dot-mini" aria-hidden="true"></span>assistant · online</span></div>
+        <button class="ai-pclose" id="ai-close" type="button" aria-label="Close assistant">×</button>
+      </header>
+      <div class="ai-msgs" id="ai-msgs" role="log" aria-live="polite" aria-label="Chat messages"></div>
+      <div class="ai-chips" id="ai-chips" aria-label="Quick replies"></div>
+      <form class="ai-form" id="ai-form" autocomplete="off">
+        <input class="ai-input" id="ai-input" type="text" maxlength="400" placeholder="ask me anything…" aria-label="Message the assistant" />
+        <button class="ai-send" type="submit" aria-label="Send message">→</button>
+      </form>
+    </section>
+
+    <!-- ================= CONTACT MODAL ================= -->
+    <div class="contact-overlay" id="contact-overlay" hidden>
+      <div class="contact-card" role="dialog" aria-modal="true" aria-labelledby="contact-title">
+        <div class="contact-head">
+          <span class="c-dots" aria-hidden="true"><i></i><i></i><i></i></span>
+          <span class="contact-title" id="contact-title">$ contact muhammad</span>
+          <button class="contact-close" type="button" id="contact-close" aria-label="Close contact dialog">×</button>
+        </div>
+        <div class="contact-body">
+          <div class="c-tabs" role="tablist" aria-label="Contact options">
+            <button class="c-tab" type="button" role="tab" id="c-tab-email" aria-controls="c-panel-email" aria-selected="true">./email</button>
+            <button class="c-tab" type="button" role="tab" id="c-tab-form" aria-controls="c-panel-form" aria-selected="false" tabindex="-1">./form</button>
+          </div>
+
+          <div role="tabpanel" id="c-panel-email" aria-labelledby="c-tab-email">
+            <p class="c-prompt"><span class="prompt" aria-hidden="true">$</span> email --direct</p>
+            <p class="c-addr-box"><span id="contact-addr"></span></p>
+            <div class="c-actions">
+              <a class="cbtn primary" id="mailto-link" href="#">write email →</a>
+              <button class="cbtn" type="button" id="copy-email">copy email</button>
+            </div>
+            <p class="c-note">no newsletters, no spam — just a direct line.</p>
+          </div>
+
+          <div role="tabpanel" id="c-panel-form" aria-labelledby="c-tab-form" hidden>
+            <form id="contact-form">
+              <p class="c-prompt"><span class="prompt" aria-hidden="true">$</span> new message --to umar</p>
+              <label class="field">
+                <span>name</span>
+                <input type="text" name="sender-name" autocomplete="name" placeholder="your name" required maxlength="80" />
+              </label>
+              <label class="field">
+                <span>your email</span>
+                <input type="email" name="sender-email" autocomplete="email" placeholder="you@example.com" required maxlength="120" />
+              </label>
+              <label class="field">
+                <span>message</span>
+                <textarea name="sender-message" placeholder="what are we building?" required maxlength="2000"></textarea>
+              </label>
+              <div class="form-actions">
+                <button class="cbtn primary" type="submit">send via email app →</button>
+                <span class="form-hint">opens your email app with this message ready to go</span>
+              </div>
+            </form>
+            <div class="c-success" id="contact-success" hidden>
+              <p class="c-prompt"><span class="prompt" aria-hidden="true">→</span> opening your email app… if nothing pops up, copy the draft below instead.</p>
+              <pre class="c-draft" id="contact-draft"></pre>
+              <div class="c-actions">
+                <button class="cbtn primary" type="button" id="copy-draft">copy draft</button>
+                <button class="cbtn ghost" type="button" id="back-to-form">← edit message</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      (function () {
+        "use strict";
+        var reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+        /* ---------- year ---------- */
+        var y = document.getElementById("year");
+        if (y) y.textContent = new Date().getFullYear();
+
+        /* ---------- contact ---------- */
+        var CONTACT_EMAIL = "umarsoftwaredevelop@gmail.com";
+
+        var contactAddr = document.getElementById("contact-addr");
+        if (contactAddr) contactAddr.textContent = CONTACT_EMAIL;
+        var mailtoLink = document.getElementById("mailto-link");
+        if (mailtoLink) mailtoLink.href = "mailto:" + CONTACT_EMAIL + "?subject=" + encodeURIComponent("Portfolio inquiry");
+
+        var contactOverlay = document.getElementById("contact-overlay");
+        var contactCard = contactOverlay ? contactOverlay.querySelector(".contact-card") : null;
+        var contactClose = document.getElementById("contact-close");
+        var contactForm = document.getElementById("contact-form");
+        var contactSuccess = document.getElementById("contact-success");
+        var contactDraft = document.getElementById("contact-draft");
+        var backToForm = document.getElementById("back-to-form");
+        var draftText = "";
+        var lastFocus = null;
+
+        function showFormView() {
+          if (contactForm) contactForm.hidden = false;
+          if (contactSuccess) contactSuccess.hidden = true;
+        }
+        function openContact() {
+          if (!contactOverlay) return;
+          lastFocus = document.activeElement;
+          showFormView();
+          activateContactTab(document.getElementById("c-tab-email"));
+          contactOverlay.hidden = false;
+          document.body.style.overflow = "hidden";
+          if (contactClose) contactClose.focus();
+        }
+        function closeContact() {
+          if (!contactOverlay) return;
+          contactOverlay.hidden = true;
+          document.body.style.overflow = "";
+          if (lastFocus && lastFocus.focus) lastFocus.focus();
+        }
+        document.querySelectorAll("[data-contact]").forEach(function (el) {
+          el.addEventListener("click", openContact);
+        });
+        if (contactClose) contactClose.addEventListener("click", closeContact);
+        if (contactOverlay) {
+          contactOverlay.addEventListener("click", function (e) {
+            if (e.target === contactOverlay) closeContact();
+          });
+          contactOverlay.addEventListener("keydown", function (e) {
+            if (e.key === "Escape") { e.preventDefault(); closeContact(); return; }
+            if (e.key === "Tab" && contactCard) {
+              var f = Array.prototype.slice.call(contactCard.querySelectorAll(
+                'a[href], button:not([disabled]), input, textarea, [tabindex]:not([tabindex="-1"])'
+              )).filter(function (el) { return el.offsetParent !== null; });
+              if (!f.length) return;
+              var first = f[0], last = f[f.length - 1];
+              if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+              else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+            }
+          });
+        }
+
+        /* contact tabs */
+        var cTabs = Array.prototype.slice.call(document.querySelectorAll(".c-tab"));
+        function activateContactTab(tab) {
+          cTabs.forEach(function (t) {
+            var on = t === tab;
+            t.setAttribute("aria-selected", on ? "true" : "false");
+            t.tabIndex = on ? 0 : -1;
+            var panel = document.getElementById(t.getAttribute("aria-controls"));
+            if (panel) panel.hidden = !on;
+          });
+        }
+        cTabs.forEach(function (tab, i) {
+          tab.addEventListener("click", function () { activateContactTab(tab); });
+          tab.addEventListener("keydown", function (e) {
+            var n = null;
+            if (e.key === "ArrowRight") n = (i + 1) % cTabs.length;
+            if (e.key === "ArrowLeft") n = (i - 1 + cTabs.length) % cTabs.length;
+            if (n !== null) { e.preventDefault(); activateContactTab(cTabs[n]); cTabs[n].focus(); }
+          });
+        });
+
+        /* email panel */
+        var copyEmailBtn = document.getElementById("copy-email");
+        if (copyEmailBtn) {
+          copyEmailBtn.addEventListener("click", function () {
+            copyText(CONTACT_EMAIL, function () {
+              copyEmailBtn.textContent = "copied ✓";
+              copyEmailBtn.classList.add("done");
+              setTimeout(function () { copyEmailBtn.textContent = "copy email"; copyEmailBtn.classList.remove("done"); }, 1600);
+            });
+          });
+        }
+
+        /* contact form — composes a mailto: draft (static page, no fake send) */
+        if (contactForm) {
+          contactForm.addEventListener("submit", function (e) {
+            e.preventDefault();
+            var name = (contactForm.elements["sender-name"].value || "").trim();
+            var email = (contactForm.elements["sender-email"].value || "").trim();
+            var msg = (contactForm.elements["sender-message"].value || "").trim();
+            var subject = "Portfolio inquiry from " + name;
+            var body = msg + "\n\n— " + name + " (" + email + ")";
+            draftText = "To: " + CONTACT_EMAIL + "\nSubject: " + subject + "\n\n" + body;
+            if (contactDraft) contactDraft.textContent = draftText;
+            contactForm.hidden = true;
+            if (contactSuccess) {
+              contactSuccess.hidden = false;
+              var copyDraftBtn = document.getElementById("copy-draft");
+              if (copyDraftBtn) copyDraftBtn.focus();
+            }
+            var ghost = document.createElement("a");
+            ghost.href = "mailto:" + CONTACT_EMAIL + "?subject=" + encodeURIComponent(subject) + "&body=" + encodeURIComponent(body);
+            document.body.appendChild(ghost);
+            ghost.click();
+            document.body.removeChild(ghost);
+          });
+        }
+        if (backToForm) {
+          backToForm.addEventListener("click", function () {
+            showFormView();
+            if (contactForm && contactForm.elements["sender-name"]) contactForm.elements["sender-name"].focus();
+          });
+        }
+        var copyDraftBtn = document.getElementById("copy-draft");
+        if (copyDraftBtn) {
+          copyDraftBtn.addEventListener("click", function () {
+            copyText(draftText, function () {
+              copyDraftBtn.textContent = "copied ✓";
+              copyDraftBtn.classList.add("done");
+              setTimeout(function () { copyDraftBtn.textContent = "copy draft"; copyDraftBtn.classList.remove("done"); }, 1600);
+            });
+          });
+        }
+
+        /* ---------- ticker ---------- */
+        var words = ["NEXT.JS", "REACT.JS", "FASTAPI", "PYTHON", "JAVASCRIPT ES6+", "TAILWIND CSS", "FLASK", "PYDANTIC", "REST APIS", "GIT", "GITHUB", "VERCEL", "HTML5", "CSS3", "PHP", "SHOPIFY LIQUID"];
+        var ticker = document.getElementById("ticker");
+        if (ticker) {
+          var html = "";
+          for (var i = 0; i < words.length; i++) html += "<span>" + words[i] + "</span>";
+          ticker.innerHTML = html + html; /* duplicate for a seamless loop */
+        }
+
+        /* ---------- terminal typer ---------- */
+        var term = document.getElementById("term");
+        var script = [
+          { c: "whoami", o: [{ t: "muhammad umar — full-stack software engineer", hl: false }] },
+          { c: "stack --list", o: [{ t: "next.js · react · fastapi · python · tailwind", hl: false }] },
+          { c: "git status", o: [{ t: "on branch main · nothing to commit, ready to ship", hl: false }] },
+          { c: "status --me", o: [{ t: "✓ open to work · accepting new projects", hl: true }] }
+        ];
+        function renderStatic() {
+          var out = "";
+          script.forEach(function (s) {
+            out += '<div class="tline"><span class="tp">$</span> <span class="tc">' + s.c + "</span></div>";
+            s.o.forEach(function (l) {
+              out += '<div class="tline"><span class="to' + (l.hl ? " hl" : "") + '">' + l.t + "</span></div>";
+            });
+          });
+          term.innerHTML = out + '<div class="tline"><span class="tp">$</span> <span class="caret"></span></div>';
+        }
+        function typeLoop() {
+          var si = 0;
+          function line(cmd, done) {
+            var div = document.createElement("div");
+            div.className = "tline";
+            div.innerHTML = '<span class="tp">$</span> ';
+            var code = document.createElement("span");
+            code.className = "tc caret";
+            div.appendChild(code);
+            term.appendChild(div);
+            var ci = 0;
+            (function tick() {
+              if (ci <= cmd.length) {
+                code.textContent = cmd.slice(0, ci);
+                ci++;
+                setTimeout(tick, 28 + Math.random() * 40);
+              } else {
+                code.classList.remove("caret");
+                done(div);
+              }
+            })();
+          }
+          function step() {
+            if (si >= script.length) {
+              var last = document.createElement("div");
+              last.className = "tline";
+              last.innerHTML = '<span class="tp">$</span> <span class="caret"></span>';
+              term.appendChild(last);
+              setTimeout(function () { term.innerHTML = ""; si = 0; step(); }, 7000);
+              return;
+            }
+            var s = script[si++];
+            line(s.c, function () {
+              setTimeout(function () {
+                s.o.forEach(function (l) {
+                  var odiv = document.createElement("div");
+                  odiv.className = "tline";
+                  odiv.innerHTML = '<span class="to' + (l.hl ? " hl" : "") + '"></span>';
+                  odiv.firstChild.textContent = l.t;
+                  term.appendChild(odiv);
+                });
+                setTimeout(step, 650);
+              }, 280);
+            });
+          }
+          step();
+        }
+        if (term) { if (reduced) renderStatic(); else typeLoop(); }
+
+        /* ---------- tabs ---------- */
+        var tablist = document.getElementById("tablist");
+        var tabs = tablist ? Array.prototype.slice.call(tablist.querySelectorAll('[role="tab"]')) : [];
+        function activateTab(tab) {
+          tabs.forEach(function (t) {
+            var on = t === tab;
+            t.setAttribute("aria-selected", on ? "true" : "false");
+            t.tabIndex = on ? 0 : -1;
+            document.getElementById(t.getAttribute("aria-controls")).hidden = !on;
+          });
+        }
+        tabs.forEach(function (tab, i) {
+          tab.addEventListener("click", function () { activateTab(tab); });
+          tab.addEventListener("keydown", function (e) {
+            var n = null;
+            if (e.key === "ArrowRight") n = (i + 1) % tabs.length;
+            if (e.key === "ArrowLeft") n = (i - 1 + tabs.length) % tabs.length;
+            if (e.key === "Home") n = 0;
+            if (e.key === "End") n = tabs.length - 1;
+            if (n !== null) { e.preventDefault(); activateTab(tabs[n]); tabs[n].focus(); }
+          });
+        });
+
+        /* ---------- reveal on scroll ----------
+           Visible by default; only below-fold elements are hidden (via .wait),
+           and the observer flips them to .go as they enter. */
+        (function () {
+          var reveals = Array.prototype.slice.call(document.querySelectorAll(".reveal"));
+          if (reduced || !("IntersectionObserver" in window)) return;
+          var io = new IntersectionObserver(function (entries) {
+            entries.forEach(function (en) {
+              if (en.isIntersecting) {
+                en.target.classList.remove("wait");
+                en.target.classList.add("go");
+                io.unobserve(en.target);
+              }
+            });
+          }, { threshold: 0.1, rootMargin: "0px 0px -40px 0px" });
+          reveals.forEach(function (el) {
+            if (el.getBoundingClientRect().top > window.innerHeight * 0.88) el.classList.add("wait");
+            io.observe(el);
+          });
+        })();
+
+        /* ---------- progress bar + active nav ---------- */
+        var progress = document.getElementById("progress");
+        var navLinks = Array.prototype.slice.call(document.querySelectorAll(".nav-links a"));
+        var sections = ["stack", "projects", "ship", "code", "resume", "hire"].map(function (id) { return document.getElementById(id); }).filter(Boolean);
+        var ticking = false;
+        function onScroll() {
+          var h = document.documentElement;
+          var max = h.scrollHeight - h.clientHeight;
+          if (progress && max > 0) progress.style.width = (h.scrollTop / max * 100).toFixed(2) + "%";
+          var pos = h.scrollTop + 140;
+          var current = null;
+          sections.forEach(function (s) { if (s.offsetTop <= pos) current = s.id; });
+          navLinks.forEach(function (a) { a.classList.toggle("active", a.getAttribute("data-nav") === current); });
+          ticking = false;
+        }
+        window.addEventListener("scroll", function () {
+          if (!ticking) { ticking = true; requestAnimationFrame(onScroll); }
+        }, { passive: true });
+        onScroll();
+
+        /* ---------- copy helper (shared) ---------- */
+        function copyText(text, done) {
+          if (navigator.clipboard && navigator.clipboard.writeText) {
+            navigator.clipboard.writeText(text).then(done, function () { fallbackCopy(text, done); });
+          } else {
+            fallbackCopy(text, done);
+          }
+        }
+        function fallbackCopy(text, done) {
+          var ta = document.createElement("textarea");
+          ta.value = text;
+          ta.style.position = "fixed"; ta.style.opacity = "0";
+          document.body.appendChild(ta);
+          ta.select();
+          try { document.execCommand("copy"); done(); } catch (e) { /* noop */ }
+          document.body.removeChild(ta);
+        }
+
+        /* ---------- copy buttons ---------- */
+        document.querySelectorAll(".copy-btn").forEach(function (btn) {
+          btn.addEventListener("click", function () {
+            var code = document.getElementById(btn.getAttribute("data-target"));
+            if (!code) return;
+            copyText(code.textContent, function () {
+              btn.textContent = "copied ✓";
+              btn.classList.add("done");
+              setTimeout(function () { btn.textContent = "copy"; btn.classList.remove("done"); }, 1600);
+            });
+          });
+        });
+
+        /* ---------- easter egg ---------- */
+        if (window.console) {
+          console.log("%c$ hire muhammad_umar%c\n> loading portfolio… done ✓\n> verdict: 10/10, would ship again", "color:#c6ff4a;font-family:monospace;font-size:14px;font-weight:bold", "color:#8b9381;font-family:monospace");
+        }
+      })();
+    </script>
+
+    <script>
+      /* ---------- resume PDF: assembled in-browser, zero dependencies ---------- */
+      (function () {
+        "use strict";
+
+        var PW = 595.28, PH = 841.89, M = 54, TOP = 68, BOTTOM = 62;
+        var CW = PW - 2 * M;
+        var INK = "0.09 0.09 0.09", GRAY = "0.33 0.33 0.33", FAINT = "0.6 0.6 0.6";
+        var ACC = "0.22 0.44 0.06", HRL = "0.84 0.84 0.8";
+
+        var R = {
+          name: "Muhammad Umar",
+          title: "Full-Stack Software Engineer",
+          email: "umarsoftwaredevelop@gmail.com",
+          avail: "open to work — full-time, contract, freelance",
+          foot: "References and code samples available on request.",
+          summary: "Full-stack software engineer building scalable web applications and interactive systems. Specializes in modern frontends (Next.js, React) and high-performance Python backends (FastAPI, Flask) — from UI to validated async APIs, deployed and maintained end to end.",
+          skills: [
+            ["Frontend", "Next.js · React.js · JavaScript (ES6+) · HTML5 · CSS3 · Tailwind CSS"],
+            ["Backend & APIs", "Python · FastAPI · Flask · RESTful APIs · Pydantic · PHP · async architecture"],
+            ["DevOps & tooling", "Git · GitHub · Vercel · Hostinger (DNS/SSL) · Shopify Liquid"]
+          ],
+          projects: [
+            { n: "Soboldent", d: "full-stack web architecture & cloud deployment", b: [
+              "Migrated a legacy WordPress entertainment brand to Next.js — full data and media migration.",
+              "Resolved production deployment challenges: custom DNS, reverse-proxy routing, SSL/TLS."
+            ] },
+            { n: "AEGIS", d: "agentic AI & crisis intelligence · #AISeekho 2026 hackathon build", b: [
+              "Python/FastAPI platform with agentic reasoning over multi-source emergency data (Gemini API).",
+              "End-to-end system architecture, database design, and traceable AI decision logging."
+            ] },
+            { n: "YT Comment Bot", d: "API automation & workflow orchestration", b: [
+              "Automated comment monitoring and engagement engine on the YouTube Data API v3.",
+              "Async scheduling with rate limits, quota control, and OAuth token refresh."
+            ] },
+            { n: "N11 Pictures", d: "media production showcase & frontend architecture", b: [
+              "High-performance digital portfolio for a photography and cinematography studio.",
+              "Near-zero layout shift, optimized hi-res delivery, fluid responsive transitions."
+            ] },
+            { n: "Veyro Official Store", d: "e-commerce architecture & merchant tooling", b: [
+              "Custom Shopify storefront with modular Liquid sections for dynamic product displays.",
+              "Webhook + REST payment microservices verifying transactions and approving orders."
+            ] },
+            { n: "UZ Lead Scraper", d: "web extraction & data engineering", b: [
+              "Concurrent scraping pipelines for automated B2B lead generation (Playwright/BeautifulSoup).",
+              "Crawled dynamic directories, bypassed basic anti-bot checks, exported structured data."
+            ] },
+            { n: "Fleet Trace", d: "logistics telemetry & real-time tracking", b: [
+              "Fleet monitoring interface with live telemetry visualization and route optimization.",
+              "Real-time mapping of vehicle coordinates and operational statuses."
+            ] },
+            { n: "Insta Flow", d: "social media automation & task distribution", b: [
+              "Scheduled content distribution with task queues and account session persistence.",
+              "Autonomous interactions that cut manual account management overhead."
+            ] }
+          ]
+        };
+
+        /* --- WinAnsi octal escapes for the few non-ASCII glyphs we use --- */
+        var WIN = { "\u2013": "\\226", "\u2014": "\\227", "\u2018": "\\221", "\u2019": "\\222",
+                    "\u201c": "\\223", "\u201d": "\\224", "\u2022": "\\225", "\u00b7": "\\267" };
+        function pdfEsc(s) {
+          var out = "", i, ch;
+          for (i = 0; i < s.length; i++) {
+            ch = s.charAt(i);
+            if (ch === "\\") out += "\\\\";
+            else if (ch === "(") out += "\\(";
+            else if (ch === ")") out += "\\)";
+            else if (ch.charCodeAt(0) < 128) out += ch;
+            else if (WIN[ch]) out += WIN[ch];
+            else out += "?";
+          }
+          return out;
+        }
+
+        /* --- Helvetica metrics (standard 14 font), for wrapping --- */
+        var UCW = { A:667,B:667,C:722,D:722,E:667,F:611,G:778,H:722,I:278,J:500,K:667,L:556,
+                    M:833,N:722,O:778,P:667,Q:778,R:722,S:667,T:611,U:722,V:667,W:944,X:667,Y:667,Z:611 };
+        var LCW = { a:556,b:556,c:500,d:556,e:556,f:278,g:556,h:556,i:222,j:222,k:500,l:222,
+                    m:833,n:556,o:556,p:556,q:556,r:333,s:500,t:278,u:556,v:500,w:722,x:500,y:500,z:500 };
+        var SPCW = { "\u2013":500, "\u2014":1000, "\u2018":333, "\u2019":333, "\u201c":408,
+                     "\u201d":408, "\u2022":350, "\u00b7":278 };
+        function glyphW(ch) {
+          if (ch === " ") return 278;
+          var c = ch.charCodeAt(0);
+          if (c >= 48 && c <= 57) return 556;
+          if (UCW[ch]) return UCW[ch];
+          if (LCW[ch]) return LCW[ch];
+          if (SPCW[ch]) return SPCW[ch];
+          if (c >= 32 && c <= 126) return 500;
+          return 556;
+        }
+        function textW(s, size, bold) {
+          var t = 0;
+          for (var i = 0; i < s.length; i++) t += glyphW(s.charAt(i));
+          return t * size / 1000 * (bold ? 1.06 : 1);
+        }
+        function wrap(text, size, maxW, bold) {
+          var words = String(text).split(" "), lines = [], cur = "", i, w, trial;
+          for (i = 0; i < words.length; i++) {
+            w = words[i];
+            if (w === "") continue;
+            trial = cur ? cur + " " + w : w;
+            if (textW(trial, size, bold) <= maxW) cur = trial;
+            else { if (cur) lines.push(cur); cur = w; }
+          }
+          if (cur) lines.push(cur);
+          return lines;
+        }
+
+        /* --- page layout; returns null when it would overflow one page --- */
+        function render(bodySize) {
+          var hs = bodySize + 0.5;
+          var cmds = [], y = TOP, link = null;
+          var i, j;
+          function t(x, yy, s, size, bold, col) {
+            cmds.push("BT /" + (bold ? "F2" : "F1") + " " + size + " Tf " + col + " rg " +
+                      x.toFixed(2) + " " + (PH - yy).toFixed(2) + " Td (" + pdfEsc(s) + ") Tj ET");
+          }
+          function rich(x, yy, size, spans) {
+            for (var k = 0; k < spans.length; k++) {
+              var sp = spans[k];
+              t(x, yy, sp.s, size, !!sp.b, sp.c || INK);
+              x += textW(sp.s, size, !!sp.b);
+            }
+          }
+          function rule(yy, x1, x2, col, w) {
+            cmds.push(w + " w " + col + " RG " + x1.toFixed(2) + " " + (PH - yy).toFixed(2) +
+                      " m " + x2.toFixed(2) + " " + (PH - yy).toFixed(2) + " l S");
+          }
+
+          /* header */
+          t(M, y, R.name, 23, true, INK); y += 30;
+          t(M, y, R.title, 12.25, false, GRAY); y += 21;
+          rich(M, y, 10, [
+            { s: R.email, c: ACC }, { s: "   |   ", c: FAINT }, { s: R.avail, c: GRAY }
+          ]);
+          var ew = textW(R.email, 10, false);
+          link = [M.toFixed(2), (PH - y - 4).toFixed(2), (M + ew).toFixed(2), (PH - y + 11).toFixed(2)].join(" ");
+          y += 16;
+          rule(y, M, PW - M, ACC, 0.8); y += 18.5;
+
+          function section(name) {
+            t(M, y, name, 10.75, true, ACC); y += 7;
+            rule(y, M, PW - M, HRL, 0.7); y += 11.5;
+          }
+
+          /* summary */
+          section("PROFESSIONAL SUMMARY");
+          var lead = bodySize + 3;
+          wrap(R.summary, bodySize, CW, false).forEach(function (ln) { t(M, y, ln, bodySize, false, INK); y += lead; });
+          y += 5;
+
+          /* skills */
+          section("TECHNICAL SKILLS");
+          R.skills.forEach(function (row) {
+            rich(M, y, bodySize, [
+              { s: row[0] + ":  ", b: true, c: INK },
+              { s: row[1], b: false, c: GRAY }
+            ]);
+            y += lead;
+          });
+          y += 5;
+
+          /* projects */
+          section("SELECTED PROJECTS");
+          for (i = 0; i < R.projects.length; i++) {
+            var p = R.projects[i];
+            y += 2;
+            if (textW(p.n + " — " + p.d, hs, false) <= CW + 8) {
+              rich(M, y, hs, [
+                { s: p.n + " — ", b: true, c: INK },
+                { s: p.d, b: false, c: GRAY }
+              ]);
+              y += 13.75;
+            } else {
+              t(M, y, p.n, hs, true, INK); y += 12.25;
+              t(M, y, p.d, hs - 0.5, false, GRAY); y += 12.75;
+            }
+            for (j = 0; j < p.b.length; j++) {
+              wrap(p.b[j], bodySize, CW - 14, false).forEach(function (ln, li) {
+                if (li === 0) t(M, y, "•", bodySize, false, ACC);
+                t(M + 14, y, ln, bodySize, false, INK);
+                y += bodySize + 3;
+              });
+            }
+            y += 7;
+          }
+
+          if (y > PH - BOTTOM) return null;
+          var fw = textW(R.foot, 9, false);
+          t((PW - fw) / 2, PH - 34, R.foot, 9, false, FAINT);
+          return { stream: cmds.join("\n") + "\n", link: link };
+        }
+
+        function renderOnce() {
+          var sizes = [10.5, 10.25, 10, 9.75, 9.5], s, r = null;
+          for (s = 0; s < sizes.length; s++) { r = render(sizes[s]); if (r) return r; }
+          return render(9) || render(8.5);
+        }
+
+        /* --- assemble PDF bytes --- */
+        function assemble(page) {
+          var out = "%PDF-1.4\n", n = 0, xref = [0], i, bytes;
+          function obj(body) { n++; xref[n] = out.length; out += n + " 0 obj\n" + body + "\nendobj\n"; }
+          obj("<< /Type /Catalog /Pages 2 0 R >>");
+          obj("<< /Type /Pages /Kids [3 0 R] /Count 1 >>");
+          obj("<< /Type /Page /Parent 2 0 R /MediaBox [0 0 " + PW + " " + PH + "] /Resources << /Font << /F1 5 0 R /F2 6 0 R >> >> /Contents 4 0 R /Annots [7 0 R] >>");
+          obj("<< /Length " + page.stream.length + " >>\nstream\n" + page.stream + "endstream");
+          obj("<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica /Encoding /WinAnsiEncoding >>");
+          obj("<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Bold /Encoding /WinAnsiEncoding >>");
+          obj("<< /Type /Annot /Subtype /Link /Rect [" + page.link + "] /Border [0 0 0] /A << /S /URI /URI (mailto:" + R.email + ") >> >>");
+          obj("<< /Producer (portfolio) /Creator (portfolio) /Title (Muhammad Umar - Resume) /Author (Muhammad Umar) >>");
+          var start = out.length;
+          out += "xref\n0 " + (n + 1) + "\n0000000000 65535 f \n";
+          for (i = 1; i <= n; i++) {
+            out += ("0000000000" + xref[i]).slice(-10) + " 00000 n \n";
+          }
+          out += "trailer\n<< /Size " + (n + 1) + " /Root 1 0 R /Info 8 0 R >>\nstartxref\n" + start + "\n%%EOF";
+          bytes = new Uint8Array(out.length);
+          for (i = 0; i < out.length; i++) bytes[i] = out.charCodeAt(i) & 255;
+          return bytes;
+        }
+
+        /* --- robust download: works in browsers + sandboxed/mobile webviews --- */
+        function triggerPdfDownload(bytes, filename) {
+          var blob = new Blob([bytes], { type: "application/pdf" });
+          var url = URL.createObjectURL(blob);
+          var a = document.createElement("a");
+          a.href = url;
+          a.download = filename;
+          a.target = "_blank";
+          a.rel = "noopener";
+          /* off-screen but rendered — display:none anchors are ignored by some mobile webviews */
+          a.style.cssText = "position:fixed;top:-10000px;left:-10000px;opacity:0;pointer-events:none;";
+          a.textContent = filename;
+          document.body.appendChild(a);
+          var evt = null;
+          try { evt = new MouseEvent("click", { bubbles: true, cancelable: true, view: window }); } catch (e) { evt = null; }
+          if (evt) a.dispatchEvent(evt); else a.click();
+          /* iOS / webviews without download-attribute support: open PDF in a new tab instead,
+             where the browser's own UI lets the user save/share it */
+          if (!("download" in a) || /iPad|iPhone|iPod/.test(navigator.userAgent)) {
+            try { window.open(url, "_blank", "noopener"); } catch (e2) { /* noop */ }
+          }
+          var fresh = true;
+          setTimeout(function () { fresh = false; }, 100);
+          /* keep the object URL alive; remove anchor only after the download has begun */
+          setTimeout(function () { try { a.remove(); } catch (e3) {} }, 4000);
+          setTimeout(function () { try { URL.revokeObjectURL(url); } catch (e4) {} }, 30000);
+          return fresh;
+        }
+
+        /* --- one handler for every resume button on the page --- */
+        document.querySelectorAll("[data-resume-download]").forEach(function (btn) {
+          btn.addEventListener("click", function () {
+            var orig = btn.getAttribute("data-orig-html");
+            if (!orig) { btn.setAttribute("data-orig-html", btn.innerHTML); orig = btn.innerHTML; }
+            try {
+              var page = renderOnce();
+              if (!page) throw new Error("layout");
+              var bytes = assemble(page);
+              if (!bytes || !bytes.length) throw new Error("pdf");
+              triggerPdfDownload(bytes, "muhammad-umar-resume.pdf");
+              btn.classList.add("done");
+              btn.innerHTML = '<span aria-hidden="true">✓</span> download started — check your files';
+              setTimeout(function () { btn.classList.remove("done"); btn.innerHTML = orig; }, 2800);
+            } catch (err) {
+              btn.innerHTML = '<span aria-hidden="true">↻</span> try again';
+              setTimeout(function () { btn.innerHTML = orig; }, 1800);
+            }
+          });
+        });
+      })();
+    </script>
+
+    <script>
+      /* ---------- AI assistant: "mu" ---------- */
+      (function () {
+        "use strict";
+        var CONTACT_EMAIL = "umarsoftwaredevelop@gmail.com";
+        var reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+        var mqMobile = window.matchMedia("(max-width: 640px)");
+
+        var fab = document.getElementById("ai-fab");
+        var teaser = document.getElementById("ai-teaser");
+        var teaserOpen = document.getElementById("ai-teaser-open");
+        var teaserClose = document.getElementById("ai-teaser-close");
+        var badge = document.getElementById("ai-badge");
+        var panel = document.getElementById("ai-panel");
+        var closeBtn = document.getElementById("ai-close");
+        var msgs = document.getElementById("ai-msgs");
+        var chipsBox = document.getElementById("ai-chips");
+        var form = document.getElementById("ai-form");
+        var input = document.getElementById("ai-input");
+        if (!fab || !panel || !msgs || !form || !input) return;
+
+        var teaserDismissed = false;
+        var lastFocus = null;
+        var greetCount = 0;
+        var fallCount = 0;
+
+        var state = { mode: "chat", step: 0, brief: {} };
+
+        /* ----- utils ----- */
+        function esc(s) { return String(s == null ? "" : s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;"); }
+        function md(s) {
+          var t = esc(s);
+          t = t.replace(/\*\*([^*]+)\*\*/g, "<strong>$1</strong>");
+          t = t.replace(/(^|[\s>])`([^`]+)`/g, "$1<code class=\"ai-code\">$2</code>");
+          return t.replace(/\n/g, "<br>");
+        }
+        function lower(t) { return (t || "").toLowerCase(); }
+        function clean(t) { return ((t || "").trim()).replace(/\s+/g, " ").slice(0, 400); }
+        function cap(t) { t = String(t || ""); return t ? t.charAt(0).toUpperCase() + t.slice(1) : t; }
+        function scrollBottom() { msgs.scrollTop = msgs.scrollHeight; }
+
+        function copyTextLocal(text, done) {
+          function finish() { if (done) done(); }
+          if (navigator.clipboard && navigator.clipboard.writeText) {
+            navigator.clipboard.writeText(text).then(finish, function () { fallback(); });
+          } else { fallback(); }
+          function fallback() {
+            var ta = document.createElement("textarea");
+            ta.value = text;
+            ta.style.position = "fixed"; ta.style.opacity = "0";
+            document.body.appendChild(ta);
+            ta.select();
+            try { document.execCommand("copy"); } catch (e) { /* noop */ }
+            document.body.removeChild(ta);
+            finish();
+          }
+        }
+
+        function fireMailto(subject, body) {
+          var a = document.createElement("a");
+          a.href = "mailto:" + CONTACT_EMAIL + "?subject=" + encodeURIComponent(subject) + "&body=" + encodeURIComponent(body);
+          a.style.display = "none";
+          document.body.appendChild(a);
+          a.click();
+          document.body.removeChild(a);
+        }
+
+        function downloadText(filename, content) {
+          var blob = new Blob([content], { type: "text/plain;charset=utf-8" });
+          var url = URL.createObjectURL(blob);
+          var a = document.createElement("a");
+          a.href = url; a.download = filename; a.target = "_blank"; a.rel = "noopener";
+          a.style.cssText = "position:fixed;top:-10000px;left:-10000px;opacity:0;pointer-events:none;";
+          document.body.appendChild(a);
+          var evt = null;
+          try { evt = new MouseEvent("click", { bubbles: true, cancelable: true, view: window }); } catch (e) { evt = null; }
+          if (evt) a.dispatchEvent(evt); else a.click();
+          if (!("download" in a) || /iPad|iPhone|iPod/.test(navigator.userAgent)) {
+            try { window.open(url, "_blank", "noopener"); } catch (e2) { /* noop */ }
+          }
+          setTimeout(function () { try { a.remove(); } catch (e3) {} }, 4000);
+          setTimeout(function () { try { URL.revokeObjectURL(url); } catch (e4) {} }, 30000);
+        }
+
+        /* ----- message plumbing ----- */
+        function userMsg(text) {
+          var d = document.createElement("div");
+          d.className = "ai-msg user";
+          d.textContent = text;
+          msgs.appendChild(d);
+          scrollBottom();
+        }
+        function showTyping() {
+          var d = document.createElement("div");
+          d.className = "ai-typing";
+          d.setAttribute("aria-hidden", "true");
+          d.innerHTML = "<i></i><i></i><i></i>";
+          msgs.appendChild(d);
+          scrollBottom();
+          return d;
+        }
+        var chain = Promise.resolve();
+        function bot(say, chips, done) {
+          chain = chain.then(function () { return deliver(say || [], chips || []); })
+                       .then(function () { if (done) done(); })
+                       .catch(function () { /* noop */ });
+        }
+        function deliver(say, chips) {
+          return say.reduce(function (p, block) {
+            return p.then(function () { return oneBlock(block); });
+          }, Promise.resolve()).then(function () { renderChips(chips); });
+        }
+        function oneBlock(block) {
+          return new Promise(function (res) {
+            renderChips([]);
+            var tp = showTyping();
+            var len = typeof block === "string" ? block.length : 220;
+            var wait = reduced ? 200 : Math.min(420 + len * 6, 2000);
+            setTimeout(function () {
+              tp.remove();
+              var d = document.createElement("div");
+              d.className = "ai-msg bot";
+              d.innerHTML = typeof block === "string" ? md(block) : (block.html || "");
+              msgs.appendChild(d);
+              scrollBottom();
+              setTimeout(res, 140);
+            }, wait);
+          });
+        }
+
+        /* ----- quick replies ----- */
+        function chip(label, opts) {
+          var c = { label: label, a: "send", text: label };
+          if (opts) for (var k in opts) c[k] = opts[k];
+          return c;
+        }
+        function renderChips(list) {
+          chipsBox.innerHTML = "";
+          list.forEach(function (c) {
+            var b = document.createElement("button");
+            b.type = "button";
+            b.className = "ai-chip";
+            b.textContent = c.label;
+            b.addEventListener("click", function () { handleChip(c); });
+            chipsBox.appendChild(b);
+          });
+          scrollBottom();
+        }
+        function handleChip(c) {
+          switch (c.a) {
+            case "send":
+              userMsg(c.text);
+              process(c.text);
+              break;
+            case "copy":
+              copyTextLocal(c.text, function () {
+                bot(["copied ✓ — paste it anywhere."]);
+              });
+              break;
+            case "scroll": {
+              var el = document.querySelector(c.to);
+              if (el) el.scrollIntoView({ behavior: reduced ? "auto" : "smooth", block: "start" });
+              if (mqMobile.matches) closeAi();
+              break;
+            }
+            case "contact":
+              closeAi();
+              var t = document.querySelector("[data-contact]");
+              if (t) t.click();
+              break;
+            case "mailto":
+              fireMailto(c.subject, c.body);
+              bot(["Done — your email app should open with the brief loaded. Just hit **send**.", NEXT_STEPS], nextChips());
+              break;
+            case "download":
+              downloadText(c.filename, c.content);
+              bot(["Saved — check your downloads folder.", NEXT_STEPS], nextChips());
+              break;
+            case "resume": {
+              var rb = document.querySelector("[data-resume-download]");
+              if (rb) rb.click();
+              bot(["Done — check your downloads folder.", NEXT_STEPS], nextChips());
+              break;
+            }
+            case "reset":
+              startIntake();
+              break;
+          }
+        }
+
+        /* ----- panel open/close ----- */
+        function openAi() {
+          if (!panel.hidden) { try { input.focus({ preventScroll: true }); } catch (e) { input.focus(); } return; }
+          lastFocus = document.activeElement;
+          panel.hidden = false;
+          fab.setAttribute("aria-expanded", "true");
+          if (!reduced) { panel.classList.remove("ai-in"); void panel.offsetWidth; panel.classList.add("ai-in"); }
+          if (teaser) teaser.hidden = true;
+          if (badge) badge.hidden = true;
+          if (mqMobile.matches) document.body.style.overflow = "hidden";
+          if (!msgs.dataset.greeted) {
+            msgs.dataset.greeted = "1";
+            input.placeholder = "ask me anything…";
+            bot([
+              "yo — I'm **mu**, Umar's AI assistant. I live right here on this page.",
+              "I can **scope your project** into a brief he can quote, or walk you through **how working together goes**. What sounds good?"
+            ], homeChips());
+          }
+          setTimeout(function () { try { input.focus({ preventScroll: true }); } catch (e) { input.focus(); } }, reduced ? 0 : 120);
+        }
+        function closeAi(returnFocus) {
+          if (panel.hidden) return;
+          panel.hidden = true;
+          panel.classList.remove("ai-in");
+          fab.setAttribute("aria-expanded", "false");
+          document.body.style.overflow = "";
+          if (returnFocus !== false && lastFocus && lastFocus.focus) lastFocus.focus();
+        }
+
+        fab.addEventListener("click", function () { panel.hidden ? openAi() : closeAi(); });
+        closeBtn.addEventListener("click", function () { closeAi(); });
+        teaserOpen.addEventListener("click", function () { openAi(); });
+        teaserClose.addEventListener("click", function (e) {
+          e.stopPropagation();
+          teaserDismissed = true;
+          teaser.hidden = true;
+        });
+        document.querySelectorAll("[data-ai-open]").forEach(function (el) {
+          el.addEventListener("click", openAi);
+        });
+        document.addEventListener("keydown", function (e) {
+          if (e.key === "Escape" && !panel.hidden) { e.stopPropagation(); closeAi(); }
+        });
+        setTimeout(function () {
+          if (teaserDismissed || !panel.hidden || msgs.dataset.greeted) return;
+          teaser.hidden = false;
+          if (badge) badge.hidden = false;
+        }, 8000);
+
+        /* ----- shared chip sets & copy ----- */
+        function homeChips() {
+          return [chip("start a project"), chip("how do we work together?"), chip("what can he build?"), chip("how much does it cost?")];
+        }
+        function serviceChips() {
+          return [chip("start a project"), chip("see the projects", { a: "scroll", to: "#projects" }), chip("how much does it cost?")];
+        }
+        function nextChips() {
+          return [chip("how do we work together?"), chip("see the projects", { a: "scroll", to: "#projects" }), chip("talk to him directly", { a: "contact" })];
+        }
+        var NEXT_STEPS = "**what happens next:** you send the brief to Umar's inbox → he replies with questions or a first pricing read → discovery locks the scope → proposal → we build.\n\nAnything else I can help with?";
+
+        function processCard() {
+          return '<div class="ai-process"><div class="ai-proc-head"><span class="tp">$</span> how-we-work.sh — written, not slideshow</div><ol>' +
+            '<li><span class="ai-step">01</span><div><strong>discovery</strong><p>A quick call or email thread to lock the scope, features, and what \u201cdone\u201d looks like. The brief we build here becomes the starting point.</p></div></li>' +
+            '<li><span class="ai-step">02</span><div><strong>proposal</strong><p>A fixed quote + honest timeline: what\u2019s included, milestones, and when you\u2019ll see it working.</p></div></li>' +
+            '<li><span class="ai-step">03</span><div><strong>build</strong><p>Development in demo-able chunks, with links to review as things land \u2014 you steer early, so there are no end-of-project surprises.</p></div></li>' +
+            '<li><span class="ai-step">04</span><div><strong>launch &amp; handoff</strong><p>Deployed to production \u2014 DNS, SSL, the works \u2014 plus docs and a walkthrough, so you own it.</p></div></li>' +
+            '</ol></div>';
+        }
+
+        /* ----- intent handlers ----- */
+        function hGreeting() {
+          var v = greetCount++ % 2;
+          if (v === 0) return { say: ["hey — good to see you here.", "Want me to **scope a project** into a brief for Umar, or walk you through **how this all works**?"], chips: homeChips() };
+          return { say: ["hello hello.", "I can scope your project, explain the process, or break down what he builds — where should we start?"], chips: homeChips() };
+        }
+        function hBye() {
+          return { say: ["later! If a project idea pops up, you know where to find me."], chips: [chip("start a project")] };
+        }
+        function hThanks() {
+          return { say: ["anytime — happy to help. Anything else on your mind?"], chips: homeChips() };
+        }
+        function hHelp() {
+          return {
+            say: ["Here's what I'm good at:\n**scope a project** — a guided set of questions that turns into a proper brief\n**explain the process** — exactly how you'll work together\n**break down services** — what he builds, in plain words\n**grab his resume** — a clean one-page PDF, generated instantly\n**answer the classics** — stack, pricing, timelines, past work"],
+            chips: homeChips()
+          };
+        }
+        function hProcess() {
+          return {
+            say: ["Here's how it runs, start to finish:", { html: processCard() }, "Simple on purpose. Want to kick off step one?"],
+            chips: [chip("start a project"), chip("how much does it cost?"), chip("how long does it take?"), chip("talk to him directly", { a: "contact" })]
+          };
+        }
+        function hPricing() {
+          return {
+            say: ["Fair question. Quotes are **fixed** and scoped from your brief — measured by scope, timeline, and integrations, not mystery math.\n\nThe honest answer: there's no price list because every build is different. Scope it with me here and Umar replies with a real number, not a guessing game."],
+            chips: [chip("start a project"), chip("how long does it take?"), chip("how do we work together?")]
+          };
+        }
+        function hTimeline() {
+          return {
+            say: ["Ballpark, based on how previous builds went: a landing page or focused MVP usually lands in **1–2 weeks**; bigger full-stack products more like **4–8 weeks**, shipped in demo-able chunks. AI or real-time-heavy systems get a custom schedule after scoping."],
+            chips: [chip("start a project"), chip("how much does it cost?"), chip("how do we work together?")]
+          };
+        }
+        function hServices() {
+          return {
+            say: ["Here's the menu — all four ship end to end:\n**scalable web apps** — full-stack products: Next.js UI + FastAPI backend\n**modern frontends** — React / Next.js, styled in Tailwind\n**python apis** — async FastAPI / Flask, Pydantic validation, Swagger docs\n**ship & maintain** — Git flows, Vercel deploys, DNS/SSL, Shopify Liquid\n\nName one and I'll go deeper — or jump straight to a brief."],
+            chips: [chip("web app"), chip("backend / api"), chip("frontend"), chip("automation"), chip("start a project")]
+          };
+        }
+        function hWebapp() {
+          return {
+            say: ["Full-stack web apps are the core offer — a modern **Next.js** front end backed by a **FastAPI** service: auth, databases, payments, dashboards, clean APIs for everything.\n\nShipped before: **Soboldent** (full entertainment platform + migration) and **N11 Pictures** (high-performance media platform)."],
+            chips: serviceChips()
+          };
+        }
+        function hApi() {
+          return {
+            say: ["High-performance Python APIs — async **FastAPI**/**Flask** with strict **Pydantic** validation, clean REST design, and auto-generated Swagger docs. Built to be fast and to stay fast.\n\nShipped before: **Veyro Official Store** (webhooks + payment microservices) and **AEGIS** (FastAPI agentic backend)."],
+            chips: serviceChips()
+          };
+        }
+        function hFrontend() {
+          return {
+            say: ["Modern frontends — component-driven **React**/**Next.js** with **Tailwind**: fast, responsive, no layout jank, styled until it looks expensive.\n\nShipped before: **N11 Pictures** and **Soboldent**."],
+            chips: serviceChips()
+          };
+        }
+        function hAutomation() {
+          return {
+            say: ["Python automation — bots, scrapers, scheduled pipelines, headless workflows. API rate limits, quotas, sessions, retries — all of that handled.\n\nShipped before: **YT Comment Bot**, **UZ Lead Scraper**, and **Insta Flow**."],
+            chips: serviceChips()
+          };
+        }
+        function hShopify() {
+          return {
+            say: ["Shopify / merchant work — custom **Liquid** sections for dynamic storefronts, webhooks, REST integrations, and payment-flow microservices.\n\nShipped before: **Veyro Official Store**."],
+            chips: serviceChips()
+          };
+        }
+        function hProjects() {
+          return {
+            say: ["**8 projects** shipped and listed on this page: Soboldent, AEGIS, YT Comment Bot, N11 Pictures, Veyro Official Store, UZ Lead Scraper, Fleet Trace, and Insta Flow — each with the full write-up and tech stack below."],
+            chips: [chip("see the projects", { a: "scroll", to: "#projects" }), chip("start a project")]
+          };
+        }
+        function hStack() {
+          return {
+            say: ["The toolkit, straight from the stack section:\n**frontend** — Next.js, React, JS ES6+, Tailwind\n**backend** — Python, FastAPI, Flask, Pydantic, REST APIs\n**ship** — Git/GitHub, Vercel, Hostinger (DNS/SSL), Shopify Liquid"],
+            chips: [chip("see the stack", { a: "scroll", to: "#stack" }), chip("start a project")]
+          };
+        }
+        function hAvail() {
+          return {
+            say: ["The pill in the nav says it all: **open to work** right now. New builds, freelance collabs, ambitious side quests — all welcome."],
+            chips: [chip("start a project"), chip("get his resume"), chip("talk to him directly", { a: "contact" })]
+          };
+        }
+        function hEmail() {
+          return {
+            say: ["Straightest line to him: **" + CONTACT_EMAIL + "**\nOr open his contact card — direct mailto plus a built-in form."],
+            chips: [chip("copy email", { a: "copy", text: CONTACT_EMAIL }), chip("open contact card", { a: "contact" }), chip("get his resume"), chip("start a project")]
+          };
+        }
+        function hWho() {
+          return {
+            say: ["I'm **mu** — a small assistant that lives on this page. I scope projects, explain the process, and help you reach Umar.\n\nAnything you tell me stays in this tab until **you** send the brief — no tracking, no servers in between."],
+            chips: homeChips()
+          };
+        }
+        function hAbout() {
+          return {
+            say: ["**Muhammad Umar** — full-stack software engineer. Modern frontends (Next.js, React) paired with high-performance Python backends (FastAPI, Flask). Builds scalable web apps and interactive systems, and is open to work right now."],
+            chips: [chip("see the projects", { a: "scroll", to: "#projects" }), chip("start a project")]
+          };
+        }
+        function hResume() {
+          return {
+            say: ["His resume lives on this page — a clean one-pager, generated fresh the moment you ask: summary, full stack, and all 8 shipped projects with real outcomes.", "Preview it in the **hire kit**, or grab the PDF straight from here."],
+            chips: [chip("download resume.pdf", { a: "resume" }), chip("preview it first", { a: "scroll", to: "#resume" }), chip("start a project")]
+          };
+        }
+        function hFallback() {
+          var v = fallCount++ % 2;
+          var say = v === 0
+            ? "Hmm — I didn't quite catch that. My strengths: **project scoping**, **the process**, **services**, **stack**, and **pricing/timeline** reads."
+            : "Not sure I follow — but I can scope your project into a brief, or walk you through how working together goes.";
+          return { say: [say], chips: homeChips() };
+        }
+
+        var HANDLERS = {
+          greeting: hGreeting, goodbye: hBye, thanks: hThanks, help: hHelp,
+          process: hProcess, pricing: hPricing, timeline: hTimeline, services: hServices,
+          webapp: hWebapp, api: hApi, frontend: hFrontend, automation: hAutomation, shopify: hShopify,
+          projects: hProjects, stack: hStack, availability: hAvail, email: hEmail, who: hWho, about: hAbout,
+          resume: hResume
+        };
+
+        /* ----- classifier ----- */
+        var INTENTS = [
+          { id: "greeting", keys: ["hello", "hi there", "hey", "hiya", "yo", "sup", "salaam", "salam", "assalam", "good morning", "good evening", "good afternoon", "aoa"] },
+          { id: "goodbye", keys: ["goodbye", "good bye", "see you", "laters", "take care", "goodnight", "good night"] },
+          { id: "thanks", keys: ["thank", "thx", "shukriya", "appreciate"] },
+          { id: "help", keys: ["help", "what can", "options", "menu", "commands"] },
+          { id: "process", keys: ["how do we work", "how will we work", "work together", "working together", "work with you", "work with him", "how does it work", "how do you work", "process", "workflow", "how do we start", "how to start", "get started", "collaborat", "next step", "onboard"] },
+          { id: "pricing", keys: ["how much", "price", "pricing", "cost", "rate", "budget", "charge", "fees", "quote", "pay", "payment", "expensive", "cheap"] },
+          { id: "timeline", keys: ["how long", "timeline", "duration", "how fast", "deadline", "when can", "deliver", "turnaround", "eta", "how soon"] },
+          { id: "webapp", keys: ["web app", "webapp", "web-app", "full-stack", "fullstack", "full stack", "dashboard", "saas", "platform", "mobile app"] },
+          { id: "api", keys: ["api", "apis", "backend", "back-end", "fastapi", "flask", "microservice", "endpoint"] },
+          { id: "frontend", keys: ["frontend", "front-end", "react", "nextjs", "next.js", "tailwind", "user interface", "ui "] },
+          { id: "automation", keys: ["bot", "automation", "scrape", "scraper", "scraping", "comment bot", "youtube", "instagram", "playwright", "script", "workflow automation"] },
+          { id: "shopify", keys: ["shopify", "ecommerce", "e-commerce", "ecom", "store", "liquid"] },
+          { id: "projects", keys: ["projects", "project ", "portfolio", "built", "shipped", "examples", "past work", "previous work", "clients", "repo", "github"] },
+          { id: "stack", keys: ["stack", "tech", "technology", "technologies", "tools", "languages", "built with", "which tech"] },
+          { id: "availability", keys: ["available", "availability", "open to work", "open right now", "busy", "slots", "booked", "taking work", "free right now"] },
+          { id: "email", keys: ["email", "contact", "reach", "talk to him", "talk to umar", "phone", "call", "message him", "dm", "whatsapp", "linkedin"] },
+          { id: "who", keys: ["who are you", "your name", "what are you", "about you", "who is mu", "whose assistant", "who made you", "are you ai", "are you real"] },
+          { id: "about", keys: ["umar", "muhammad", "about him", "bio", "experience", "yourself"] },
+          { id: "resume", keys: ["resume", "cv", "pdf", "portfolio pdf", "download resume", "download his resume", "get his resume", "one pager", "one-pager", "save his resume", "pdf of him"] },
+          { id: "services", keys: ["what can he build", "service", "services", "what do you do", "what does he do", "what can he do", "offer", "capable", "skills", "capabilities", "what does he", "good at"] }
+        ];
+        function classify(text) {
+          var t = " " + lower(text) + " ";
+          var out = [];
+          INTENTS.forEach(function (it) {
+            var s = 0, best = 0;
+            it.keys.forEach(function (k) {
+              if (t.indexOf(k) !== -1) { s += 2; if (k.length > best) best = k.length; }
+            });
+            if (s > 0) out.push({ id: it.id, score: s + best / 20 });
+          });
+          out.sort(function (a, b) { return b.score - a.score; });
+          return out.slice(0, 2);
+        }
+        function respond(hits) {
+          if (!hits.length) { var r = hFallback(); bot(r.say, r.chips); return; }
+          var first = HANDLERS[hits[0].id] ? hits[0].id : null;
+          var second = (hits[1] && HANDLERS[hits[1].id]) ? hits[1].id : null;
+          var ids = [first];
+          /* smart pairing: service detail first, money/time answer follows */
+          ["pricing", "timeline"].forEach(function (m) {
+            if (second === m && first && first !== "pricing" && first !== "timeline") ids = [first, m];
+            if (first === m && second && second !== "pricing" && second !== "timeline" && first !== second) ids = [second, m];
+          });
+          var say = [], chips = [];
+          ids.forEach(function (id) { var r = HANDLERS[id](); say = say.concat(r.say); chips = r.chips; });
+          bot(say, chips);
+        }
+        function wantsIntake(text) {
+          var t = lower(text);
+          if (/\byo\b/.test(t) && t.length < 20) return false;
+          return /start(ing)? (a )?project|scope( ?(my|it|the|this))?|project brief|(draft|make|get|build|write).{0,20}brief|brief (me|my)|let'?s (start|begin)|lets (start|begin)|get a quote|need a quote|(i have|i've got|got) (a|an|the) (project|idea|app|website)/.test(t);
+        }
+
+        /* ----- guided intake ----- */
+        var EMAIL_RE = /^[^\s@<>,;]+@[^\s@<>,;]+\.[^\s@<>,;]{2,}$/;
+        function cancelChip() { return chip("cancel", { text: "cancel" }); }
+        function stepChips(list) {
+          var c = list.slice();
+          if (state.step > 0) c.push(chip("\u2190 back", { text: "back" }));
+          c.push(cancelChip());
+          return c;
+        }
+        function normSkip(t, fallback) { return /^skip(\s|$)/i.test(t) ? fallback : t; }
+
+        var INTAKE = [
+          {
+            id: "type",
+            prompt: ["Let's build your project brief — **6 quick questions**.", "**[1/6]** What kind of project is it?"],
+            chips: [chip("web app"), chip("backend / api"), chip("frontend / site"), chip("automation / bot"), chip("shopify / ecom"), chip("not sure yet")],
+            take: function (t) { state.brief.type = clean(t); return 1; },
+            ack: function () { return "Locked in: **" + state.brief.type + "**."; }
+          },
+          {
+            id: "desc",
+            prompt: ["**[2/6]** Describe it in a line or two — what it does, who it's for. Specifics = a more accurate quote. (You can also say `skip`.)"],
+            chips: [],
+            take: function (t) { state.brief.desc = normSkip(clean(t), "to be discussed"); return 1; },
+            ack: function () { return state.brief.desc === "to be discussed" ? "Skipping the details for now — no problem." : "Got it."; }
+          },
+          {
+            id: "timeline",
+            prompt: ["**[3/6]** When do you need it live?"],
+            chips: [chip("asap"), chip("1–2 weeks"), chip("about a month"), chip("2–3 months"), chip("no rush")],
+            take: function (t) { state.brief.timeline = normSkip(clean(t), "flexible"); return 1; },
+            ack: function () { return "Noted — **" + state.brief.timeline + "**."; }
+          },
+          {
+            id: "budget",
+            prompt: ["**[4/6]** Budget-wise, what's comfortable? Rough is fine — the real quote comes from Umar."],
+            chips: [chip("under $500"), chip("$500–2k"), chip("$2k–5k"), chip("$5k+"), chip("not sure yet")],
+            take: function (t) { state.brief.budget = normSkip(clean(t), "not sure yet"); return 1; },
+            ack: function () { return "Okay — **" + state.brief.budget + "**."; }
+          },
+          {
+            id: "name",
+            prompt: ["**[5/6]** Who should Umar address the reply to?"],
+            chips: [],
+            take: function (t) {
+              var raw = clean(t);
+              var m = raw.match(/[^\s@<>,;]+@[^\s@<>,;]+\.[^\s@<>,;]{2,}/);
+              if (m) {
+                state.brief.email = m[0].slice(0, 120);
+                var rest = raw.replace(m[0], "").replace(/[,;|:\s]+/g, " ").trim();
+                if (rest.length >= 2) {
+                  state.brief.name = cap(clean(rest).slice(0, 60));
+                  return 2; /* email captured too — skip the next step */
+                }
+                bot(["Locked in — **" + state.brief.email + "**.", "And what should Umar call you?"], stepChips([]));
+                return 0;
+              }
+              if (raw.length < 2) { bot(["Give me at least a first name — even a nickname works."], stepChips([])); return 0; }
+              state.brief.name = cap(raw.slice(0, 60));
+              return 1;
+            },
+            ack: function () { return "Nice to meet you, **" + state.brief.name + "**."; }
+          },
+          {
+            id: "email",
+            prompt: ["**[6/6]** What's your email so he can reply?"],
+            chips: [],
+            take: function (t) {
+              var m = clean(t).match(EMAIL_RE);
+              if (!m) { bot(["That doesn't look like an email — try again? (e.g. `you@domain.com`)"], stepChips([])); return 0; }
+              state.brief.email = m[0].slice(0, 120);
+              return 1;
+            },
+            ack: function () { return ""; }
+          }
+        ];
+
+        function startIntake() {
+          state.mode = "intake";
+          state.step = 0;
+          state.brief = {};
+          input.placeholder = "type your answer… (back / cancel)";
+          renderStep();
+        }
+        function renderStep() {
+          var s = INTAKE[state.step];
+          bot(s.prompt, stepChips(s.chips));
+        }
+        function takeStep(raw) {
+          var s = INTAKE[state.step];
+          var adv = s.take(raw);
+          if (!adv) return;
+          state.step += adv;
+          /* skip the email question if it was already captured during the name step */
+          var next = INTAKE[state.step];
+          if (next && next.id === "email" && state.brief.email) state.step += 1;
+          if (state.step >= INTAKE.length) { finishIntake(); return; }
+          var ack = s.ack ? s.ack() : "";
+          if (ack) bot([ack], [], renderStep);
+          else renderStep();
+        }
+
+        function briefText(b) {
+          var d = new Date().toISOString().slice(0, 10);
+          return "PROJECT BRIEF (from portfolio assistant)\n" +
+            "prepared: " + d + "\n" +
+            "----------------------------------------\n" +
+            "name:         " + b.name + "\n" +
+            "email:        " + b.email + "\n" +
+            "project type: " + b.type + "\n" +
+            "description:  " + b.desc + "\n" +
+            "timeline:     " + b.timeline + "\n" +
+            "budget:       " + b.budget + "\n" +
+            "----------------------------------------\n" +
+            "reply-to: " + b.email;
+        }
+        function briefCard(b) {
+          function r(k, v) { return '<div class="ai-brief-row"><span class="k">' + k + '</span><span>' + esc(v) + '</span></div>'; }
+          return '<div class="ai-brief">' +
+            r("name", b.name) + r("email", b.email) + r("type", b.type) +
+            r("desc", b.desc) + r("timeline", b.timeline) + r("budget", b.budget) +
+            "</div>";
+        }
+        function safeName(n) {
+          return (lower(n).replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "") || "client").slice(0, 40);
+        }
+        function finishIntake() {
+          state.mode = "chat";
+          state.step = 0;
+          input.placeholder = "ask me anything…";
+          var b = state.brief;
+          var text = briefText(b);
+          bot(
+            ["Your brief is ready — the real thing, not a summary.", { html: briefCard(b) }],
+            [
+              chip("send via email app", { a: "mailto", subject: "Project brief — " + b.name, body: text }),
+              chip("copy brief", { a: "copy", text: text }),
+              chip("download brief", { a: "download", filename: "project-brief-" + safeName(b.name) + ".txt", content: text }),
+              chip("start over", { a: "reset" })
+            ]
+          );
+        }
+
+        function handleCommand(cmd) {
+          if (cmd === "back") {
+            if (state.step > 0) { state.step--; bot(["Okay — previous question:", ""], [], renderStep); }
+            else bot(["We're already at the first question."], [], renderStep);
+            return;
+          }
+          if (cmd === "cancel") {
+            state.mode = "chat"; state.step = 0; state.brief = {};
+            input.placeholder = "ask me anything…";
+            bot(["No sweat — brief discarded. What else?"], [chip("start a project"), chip("how do we work together?"), chip("what can he build?")]);
+            return;
+          }
+          /* restart */
+          startIntake();
+        }
+        function isCommand(t) {
+          var s = lower(t).trim();
+          function any(arr) { return arr.some(function (k) { return s === k || s.indexOf(k) !== -1; }); }
+          if (any(["start over", "reset", "begin again", "from scratch", "again"])) return "restart";
+          if (any(["cancel", "stop", "quit", "nevermind", "never mind"])) return "cancel";
+          if (any(["back", "go back", "previous", "undo"])) return "back";
+          return null;
+        }
+
+        /* ----- router ----- */
+        function process(text) {
+          if (state.mode === "intake") {
+            var cmd = isCommand(text);
+            if (cmd) { handleCommand(cmd); return; }
+            takeStep(text);
+            return;
+          }
+          if (wantsIntake(text)) { startIntake(); return; }
+          respond(classify(text));
+        }
+        form.addEventListener("submit", function (e) {
+          e.preventDefault();
+          var v = input.value.trim();
+          if (!v) return;
+          input.value = "";
+          userMsg(v);
+          process(v);
+        });
+      })();
+    </script>
+  </body>
+</html>
